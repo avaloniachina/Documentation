@@ -15,7 +15,7 @@
   * [Windows](docs/getting-started/windows.md)
   * [用户控件](docs/getting-started/yong-hu-kong-jian.md)
   * [资源](docs/getting-started/zi-yuan.md)
-  * [开发工具](docs/getting-started/kai-fa-gong-ju.md)
+  * [开发工具](docs/getting-started/developer-tools.md)
   * [错误和警告日志](docs/getting-started/cuo-wu-he-jing-gao-ri-zhi.md)
   * [未处理的异常](docs/getting-started/wei-chu-li-de-yi-chang.md)
   * [应用生命周期](docs/getting-started/ying-yong-sheng-ming-zhou-qi.md)

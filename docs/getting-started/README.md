@@ -1,6 +1,6 @@
 # ⚡ 快速开始
 
-使用`Avalonia，`
+使用`Avalonia`，请安装模板
 
 ```
 dotnet new -i Avalonia.Templates

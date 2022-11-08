@@ -62,7 +62,7 @@
 
 * [🐣 基础](guides/ji-chu.md)
 * [🤿 深入](guides/deep-dives.md)
-* [👩💻 👩💻开发人员指南](guides/kai-fa-ren-yuan-zhi-nan.md)
+* [👩💻 👩💻 开发人员指南](guides/kai-fa-ren-yuan-zhi-nan.md)
 
 ## 教程 <a href="#tutorials" id="tutorials"></a>
 

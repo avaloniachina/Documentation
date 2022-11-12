@@ -1,4 +1,4 @@
-# Model-View-ViewModel (MVVM)部分
+# Model-View-ViewModel 模式(MVVM)
 
 除了在代码隐藏中编写代码之外，Avalonia 还支持使用 [Model-View-ViewModel](https://docs.avaloniaui.net/guides/basics/mvvm) （MVVM）模式。MVVM 是一种构建 UI 应用程序的常用方法，它将视图逻辑与应用程序逻辑分离开，这样应用程序就能够单元测试。
 

@@ -84,7 +84,7 @@ namespace My.Namespace
 
 ### Design.DataContext <a id="Design.DataContext"></a>
 
-Alternatively you can use `Design.DataContext` attached property. As well as Design.Width and Design.Height.
+此外你还可以使用依赖属性 `Design.DataContext` 。以及 `Design.Width` 和 `Design.Height`。
 ```markup
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"

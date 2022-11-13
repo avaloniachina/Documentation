@@ -21,7 +21,7 @@ Avalonia 允许使用[ XAML 标记语言](https://docs.avaloniaui.net/guides/bas
 </Window>
 ```
 
-具体来说，该 `XAML` 分别使用 `window` 和 `button` 元素定义窗体和按钮。每个元素都配置了属性，例如 `Window` 元素的 `Title` 属性，用于指定窗口的标题栏文本。在运行时，`Avalonia` 将标记中定义的元素和属性转换为 `Avalonia` 类的实例。例如，the Window element is converted to an instance of the Window class whose Title property is the value of the Title attribute.
+具体来说，该 `XAML` 分别使用 `window` 和 `button` 元素定义窗体和按钮。每个元素都配置了属性，例如 `Window` 元素的 `Title` 属性，用于指定窗口的标题栏文本。在运行时，`Avalonia` 将标记中定义的元素和属性转换为 `Avalonia` 类的实例。例如，`XAML` 中的 `Window` 元素被转化为 `Window` 类的一个实例，它的 `Title` 属性就是 `XAML` 中的 `Title` 属性。
 
 由于 `XAML` 是基于 `XML` 的，因此使用它编写的 UI 是在被称为元素树的嵌套元素层次结构中组装的。元素树能够直观且有逻辑地创建和管理 UI。
 

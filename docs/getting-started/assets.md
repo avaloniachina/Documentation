@@ -56,7 +56,7 @@ Avalonia 提供了转换器，可以开箱即用地加载位图、图标和字�
 <Image Source="resm:MyApp.Assets.icon.png?assembly=MyAssembly"/>
 ```
 
-资产的名称由 MSBuild 根据程序集名称、文件路径和文件名自动生成，这些部分都用句点分隔。如果 Avalonia 找不到清单资源，请使用 [`Assembly.GetManifestResourceNames`](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.assembly.getmanifestresourcenames) 检查资源名称。
+资产的名称由 MSBuild 根据程序集名称、文件路径和文件名自动生成，这些部分都用句点分隔。如果 Avalonia 找不到清单资源，请使用 [`Assembly.GetManifestResourceNames`](https://docs.microsoft.com/zh-cn/dotnet/api/system.reflection.assembly.getmanifestresourcenames) 检查资源名称。
 
 ### 在代码中加载资产 <a id="loading-assets-from-code"></a>
 

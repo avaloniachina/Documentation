@@ -13,7 +13,7 @@
     * [数据绑定](docs/getting-started/programming-with-avalonia/data-binding.md)
     * [图像和动画](docs/getting-started/programming-with-avalonia/graphics-and-animations.md)
   * [Windows](docs/getting-started/windows.md)
-  * [用户控件](docs/getting-started/usercontrols.md)
+  * [UserControls](docs/getting-started/usercontrols.md)
   * [资源](docs/getting-started/assets.md)
   * [开发者工具](docs/getting-started/developer-tools.md)
   * [错误和警告日志](docs/getting-started/logging-errors-and-warnings.md)

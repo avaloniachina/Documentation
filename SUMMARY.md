@@ -14,7 +14,7 @@
     * [图像和动画](docs/getting-started/programming-with-avalonia/graphics-and-animations.md)
   * [Windows](docs/getting-started/windows.md)
   * [UserControls](docs/getting-started/usercontrols.md)
-  * [资源](docs/getting-started/assets.md)
+  * [资产](docs/getting-started/assets.md)
   * [开发者工具](docs/getting-started/developer-tools.md)
   * [错误和警告日志](docs/getting-started/logging-errors-and-warnings.md)
   * [未处理的异常](docs/getting-started/unhandledexceptions.md)

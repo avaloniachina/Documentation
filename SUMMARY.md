@@ -166,7 +166,7 @@
 
 * [📋 待办事项应用](tutorials/todo-list-app.md)
 * [📻 音乐商店应用](tutorials/music-store-app.md)
-* [🌐 在浏览器中运行](tutorials/running-in-the-browser.md)
+* [🕸️ 在浏览器中运行](tutorials/running-in-the-browser.md)
 * [📱 为移动设备开发](tutorials/developing-for-mobile.md)
 
 ## 杂项 <a href="#misc" id="misc"></a>

@@ -42,11 +42,11 @@ dotnet add package Avalonia.Diagnostics --version 0.10.0
 
 ![](<../../.gitbook/assets/image (23).png>)
 
-在 .NET core 2.1 下运行时存在一个已知问题，即按 F12 将导致程序退出。在这种情况下，要么切换到 .NET core 2.0 或 3.0+，要么更改快捷键，例如 `Ctrl+F12`。
+在 .NET core 2.1 下运行时存在一个已知问题，即按 F12 将导致程序退出。在这种情况下，或者切换到 .NET core 2.0 或 3.0+，或者更改快捷键，例如 `Ctrl+F12`。
 
 ## Logical Tree 和 Visual Tree
 
-`Logical Tree` 和 `Visual Tree` 选项卡展示了控件在窗体中的逻辑树和可视化树。选中一个控件后，右侧的窗格中会显示该控件的属性，可以在这个窗格中编辑该控件的属性。
+`Logical Tree` 和 `Visual Tree` 选项卡展示了控件在窗体中的逻辑树和视觉树。选中一个控件后，右侧的窗格中会显示该控件的属性，可以在这个窗格中编辑该控件的属性。
 
 ### 属性
 
@@ -74,7 +74,7 @@ dotnet add package Avalonia.Diagnostics --version 0.10.0
 
 ### 样式
 
-[properties](developer-tools.md#properties) 面板显示了当前属性的活动值(active values)，样式面板显示了所有值和值的来源。
+[属性](developer-tools.md#properties) 面板显示了当前属性的活动值(active values)，样式面板显示了所有值和值的来源。
 
 此外，可以看到可能与此控件匹配的所有样式（通过切换 `Show inactive` 选项）。
 
@@ -115,7 +115,7 @@ If setter value is bound to a resource it will be indicated by a circle followed
 
 * `help`: 输出帮助信息
 * `e`: 在逻辑树或可视化树中当前选中的控件
-* `root`: 可视化树的根
+* `root`: 视觉树的根
 
 ## 快捷键
 

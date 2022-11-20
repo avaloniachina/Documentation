@@ -4,7 +4,7 @@
 
 ### 使用资产 <a id="including-assets"></a>
 
-通过使用项目文件中的 `<AvaloniaResource>` 项，可以在应用程序中使用资产。默认情况下，MVVM 应用程序模板将`Assets` 目录中的所有文件视为 `<AvaloniaResource>`：
+通过使用项目文件中的 `<AvaloniaResource>` 项，可以在应用程序中使用资产。MVVM 应用程序模板默认将 `Assets` 目录中的所有文件视为 `<AvaloniaResource>`：
 
 ```markup
 <ItemGroup>
@@ -14,7 +14,7 @@
 
 你可以通过添加其他 `<AvaloniaResource>` 元素来使用所需的任何文件。
 
-注意到，我们在这里提到的是**资产** (Assets) ，而 MSBuild 项称为 Avalonia **资源** (resource)。资产在内部存储为[.NET 资源](https://docs.microsoft.com/zh-cn/visualstudio/ide/managing-application-resources-dotnet)。这是因为术语“资源”与[XAML 资源](../styling/resources.md)冲突，我们将始终将其称为“资产”。
+注意到，我们在这里提到的是**资产** (Assets) ，而 MSBuild 项称为 Avalonia **资源** (resource)。资产在内部存储为[.NET 资源](https://docs.microsoft.com/zh-cn/visualstudio/ide/managing-application-resources-dotnet)。但因为与术语“资源”与[XAML 资源](../styling/resources.md)冲突，因此我们统一将其称为“资产”。
 
 ### 引用资产 <a id="referencing-assets"></a>
 

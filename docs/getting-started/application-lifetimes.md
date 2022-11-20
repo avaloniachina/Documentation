@@ -1,6 +1,6 @@
 # 应用生命周期
 
-平台生而不平等。我们在 Windows 窗体和 WPF 中习惯的生命周期管理只能在桌面风格的平台上工作。AvaloniaUI 是一个跨平台框架，为了确保应用程序的可移植性，我们为应用提供了不同的生命周期模型，并在平台允许的情况下能手动控制一切。
+平台生而不平等。我们在 WinForms 和 WPF 中习惯的生命周期管理只能在桌面风格的平台上工作。AvaloniaUI 是一个跨平台框架，为了确保应用程序的可移植性，我们为应用提供了不同的生命周期模型，并在平台允许的情况下能手动控制一切。
 
 ## 生命周期是如何运作的?
 
@@ -38,26 +38,26 @@ public override void OnFrameworkInitializationCompleted()
 
 ## 生命周期类型
 
-特定的生命周期可能在不同的方面起作用，有一组接口可以访问它们。
+每种特定的生命周期有其独有的关注点，我们提供了一组接口用以访问。
 
 ### IControlledApplicationLifetime
 
-规定：
+由以下方法提供：
 
 - `StartWithClassicDesktopLifetime`
 - `StartLinuxFramebuffer`
 
-订阅 `Startup` `Exit` 事件，并通过调用 `Shutdown` 方法显式关闭应用程序。还提供控制应用程序的退出代码。
+你可以订阅 `Startup` `Exit` 事件，或通过调用 `Shutdown` 方法显式关闭应用程序。还提供控制应用程序的退出代码。
 
 ### IClassicDesktopStyleApplicationLifetime
 
 继承：`IControlledApplicationLifetime`
 
-规定:
+由以下方法提供:
 
 - `StartWithClassicDesktopLifetime`
 
-允许使用 WindowsForms/WPF 方式控制应用程序的生命周期。提供一种方法，能够访问当前打开的窗口列表、设置主窗口和下列3种关闭模式：
+允许使用 WinForms/WPF 的方式控制应用程序的生命周期。它提供一个方法，能够访问当前打开的窗口列表、设置主窗口及设置下列3种关闭模式：
 
 - OnLastWindowClose - 关闭最后一个窗体时关闭应用程序
 - OnMainWindowClose - 如果设置了MainWindow，则在关闭 MainWindow 时关闭应用程序
@@ -65,7 +65,7 @@ public override void OnFrameworkInitializationCompleted()
 
 ### ISingleViewApplicationLifetime
 
-规定:
+由以下方法提供:
 
 - `StartLinuxFramebuffer`
 - 移动平台 (WIP)

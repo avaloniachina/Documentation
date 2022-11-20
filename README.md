@@ -22,7 +22,7 @@
 
 ## 支持的开发环境
 
-以下环境提供`Avalonia XAM`的`IntelliSense`支持
+以下环境提供`Avalonia XAML`的`IntelliSense`支持
 
 * `Visual Studio` 2017及更高版本（带或不带`Resharper` 2020.3）。还支持`Avalonia Visual Designer`
 * `JetBrains Rider` 2020.3及更高版本

@@ -1,6 +1,6 @@
 # 错误和警告日志
 
-Avalonia 可以使用 [`System.Diagnostics.Trace`](https://docs.microsoft.com/zh-cn/dotnet/api/system.diagnostics.trace) 记录警告和错误。要启用日志记录，`Program.cs` 文件中需要调用 `LogToTrace` 方法：
+Avalonia 可以使用 [`System.Diagnostics.Trace`](https://docs.microsoft.com/zh-cn/dotnet/api/system.diagnostics.trace) 记录警告和错误。要启用日志记录，需要在 `Program.cs` 文件中调用 `LogToTrace` 方法：
 
 ```csharp
 public static AppBuilder BuildAvaloniaApp()

@@ -27,7 +27,7 @@
 如果 `XAML` 已经在库中，`Avalonia` 需要一个可执行的应用程序才能预览它。从设计器右上角的下拉列表中选择可执行项目。项目构建完毕后，在编辑器中编辑 `XAML` 文件会自动更新预览界面。
 
 {% hint style="warning" %}
-在某些情况下，由于 `Visual Studio` 中的错误或限制，不是显示`Avalonia XAML` 设计器，而是显示 `WPF` 设计器。如果 `XAML` 文件显示大量错误，请尝试右键单击该文件，然后选择“打开方式…”→ “ `Avalonia XAML Editor`”。
+在某些情况下，由于 `Visual Studio` 中的错误或限制，不是显示`Avalonia XAML` 设计器，而是显示 `WPF` 设计器。如果 `XAML` 文件显示大量错误，请尝试右键单击该文件，然后选择“打开方式…”→ “`Avalonia XAML Editor`”。
 {% endhint %}
 
 ## 设计时属性(Design-Time Properties) <a id="design-time-properties"></a>

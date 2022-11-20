@@ -2,7 +2,7 @@
 
 欢迎访问`Avalonia`文档！
 
-学习如何从单个存储库创建适用于`Windows`、`macOS`、`Linux`、`iOS`、`Android`和`Web Assembly`的`.NET GUI`应用程序。
+学习如何从单个代码库创建适用于`Windows`、`macOS`、`Linux`、`iOS`、`Android`和`Web Assembly`的`.NET GUI`应用程序。
 
 ## 支持的 `.NET` 版本
 
@@ -22,7 +22,7 @@
 
 ## 支持的开发环境
 
-以下环境支持具有`IntelliSense`的`Avalonia XAML：`
+以下环境提供`Avalonia XAML`的`IntelliSense`支持
 
 * `Visual Studio` 2017及更高版本（带或不带`Resharper` 2020.3）。还支持`Avalonia Visual Designer`
 * `JetBrains Rider` 2020.3及更高版本

@@ -2,7 +2,7 @@
 
 `Window` 是 Avalonia 的顶层控件。
 
-`Window` 由两部分组成：[XAML 文件](../../guides/basics/introduction-to-xaml.md) （例如 `MainWindow.axaml`）和[代码隐藏](../../guides/basics/code-behind.md) 文件（例如 `MainWindow.axaml.cs`）。代码隐藏文件中定义了一个展示窗体的 .NET 类。
+`Window` 由两部分组成：[XAML 文件](../../guides/basics/introduction-to-xaml.md) （例如 `MainWindow.axaml`）和[代码隐藏](../../guides/basics/code-behind.md) 文件（例如 `MainWindow.axaml.cs`）。代码隐藏文件中定义了一个表示窗体的 .NET 类。
 
 想要了解更多信息和示例，请浏览 [`Window`](../controls/window.md) 控件。
 
@@ -25,5 +25,5 @@
 dotnet new avalonia.window -na [namespace] -n [name]
 ```
 
-想要了解更多信息，请浏览 [.NET core 模板存储库](https://github.com/AvaloniaUI/avalonia-dotnet-templates/).
+想要了解更多信息，请浏览 [.NET core 模板代码库](https://github.com/AvaloniaUI/avalonia-dotnet-templates/).
 

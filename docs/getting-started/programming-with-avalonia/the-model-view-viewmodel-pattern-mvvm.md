@@ -62,7 +62,7 @@ namespace AvaloniaApplication1
 {% endtab %}
 {% endtabs %}
 
-在本例中，代码隐藏将 `Window` 类的 [`DataContext`](https://docs.avaloniaui.net/docs/data-binding/the-datacontext) 属性赋值给了 `MainWindowViewModel` 类的实例。然后 XAML 使用 Avalonia [`｛Binding｝`](https://docs.avaloniaui.net/docs/data-binding/bindings) 将 `Button` 的 `Content` 属性绑定到 `MainWindowViewModel` 上的 `Button Text` 属性。它还将 `Button` 的 [`Command`](https://docs.avaloniaui.net/docs/data-binding/binding-to-commands) 属性绑定到 `MainWindowViewModel` 上的 `Button Clicked` 方法。
+在本例中，代码隐藏将 `Window` 类的 [`DataContext`](https://docs.avaloniaui.net/docs/data-binding/the-datacontext) 属性赋值给了 `MainWindowViewModel` 类的实例。然后 XAML 使用 Avalonia [`{Binding}`](https://docs.avaloniaui.net/docs/data-binding/bindings) 将 `Button` 的 `Content` 属性绑定到 `MainWindowViewModel` 上的 `ButtonText` 属性。它还将 `Button` 的 [`Command`](https://docs.avaloniaui.net/docs/data-binding/binding-to-commands) 属性绑定到 `MainWindowViewModel` 上的 `ButtonClicked` 方法。
 
 单击 `Button` 控件时，它会执行其 `Command` 命令，调用已绑定的 `MainWindowViewModel.ButtonClicked` 方法。这个方法就会去设置 `ButtonText` 属性，这样就会触发 `INotifyPropertyChanged.PropertyChanged` 事件，导致 `Button` 控件重新读取其绑定值并更新 UI。
 

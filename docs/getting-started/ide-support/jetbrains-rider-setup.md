@@ -2,11 +2,11 @@
 
 
 
-1. 下载并安装 .NET 5 SDK [下载 .NET \(Linux, macOS, and Windows\) \(microsoft.com\)](https://dotnet.microsoft.com/download)
+1. 下载并安装 .NET SDK [下载 .NET \(Linux, macOS, and Windows\) \(microsoft.com\)](https://dotnet.microsoft.com/download)
 
    这是用于构建 `Avalonia` 应用程序的运行时开发工具包（编译器等）。
 
-2. 安装 Avalonia Templates
+2. 安装 Avalonia 模板
 
    运行命令 `dotnet new -i Avalonia.Templates` 从计算机上的命令提示符中选择模板
 

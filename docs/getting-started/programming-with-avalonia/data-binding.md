@@ -5,8 +5,8 @@ Avalonia 完全支持控件和任意 .NET 对象 [绑定](../../data-binding/bin
 * 多种绑定模式：单向绑定、双向绑定、单次绑定和单向更新源
 * 绑定 [数据上下文](../../data-binding/the-datacontext.md)
 * 绑定 [其它控件](../../data-binding/binding-to-controls.md)
-* 绑定 [`Tasks and Observables`](../../data-binding/binding-to-tasks-and-observables.md)
-* 绑定 [转换器](../../data-binding/converting-binding-values.md) 并将绑定值取反
+* 绑定 [`Tasks和Observables`](../../data-binding/binding-to-tasks-and-observables.md)
+* [绑定转换器](../../data-binding/converting-binding-values.md) 以及绑定值取反
 
 下面的示例展示了一个 `TextBlock` ，通过使用绑定，当它与 `TextBox` 关联时 `TextBox` 被禁用的情况：
 

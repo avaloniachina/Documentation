@@ -4,7 +4,7 @@
 
 当使用MVVM模式时，数据上下文通常都是视图模型的实例。
 
-如果你使用 [Avalonia MVVM Application](https://docs.avaloniaui.net/tutorials/todo-list-app/creating-a-new-project#net-core-cli) 模板创建应用，那么您将在 `Program.cs` 文件中看到如下代码：
+如果你使用 [Avalonia MVVM Application](https://docs.avaloniaui.net/tutorials/todo-list-app/creating-a-new-project#net-core-cli) 模板创建应用，那么你将在 `Program.cs` 文件中看到如下代码：
 
 ```csharp
 private static void AppMain(Application app, string[] args)

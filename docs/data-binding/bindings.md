@@ -1,6 +1,6 @@
 # 绑定
 
-你可以使用{Binding}标记拓展在XAML中进行绑定。通过绑定，所有数据上下文（假设你已经为其实现了[变化通知](https://docs.avaloniaui.net/docs/data-binding/change-notifications)）的变化都将自动更新到控件上。
+你可以使用`{Binding}`标记拓展在XAML中进行绑定。通过绑定，所有数据上下文（假设你已经为其实现了[变化通知](https://docs.avaloniaui.net/docs/data-binding/change-notifications)）的变化都将自动更新到控件上。
 
 绑定默认是[`DataContext`的属性](https://docs.avaloniaui.net/docs/data-binding/the-datacontext)。例如:
 
@@ -58,9 +58,9 @@
 
 如果没有设定模式，则默认为`Default`模式。通常情况下如果控件属性不需要相应用户输入则是`OneWay`（例如`TextBlock.Text`）；如果需要依用户输入而变则是`TwoWay`（例如`TextBox.Text`）。
 
-## 字符串格式 <a id="binding-stringformat"></a>
+## 格式字符串 <a id="binding-stringformat"></a>
 
-你可以为绑定应用字符串格式以影响值在UI上的展现：
+你可以为绑定设置格式字符串，从而影响在UI上如何展现值：
 
 ```markup
 <!-- 选项 1: 使用花括号对格式字符串进行转义 -->
@@ -78,9 +78,7 @@
 
 当`StringFormat`属性存在时，绑定的值将会由`StringFormatValueConverter`利用指定的格式字符串进行转换。
 
-于WPF不同，你需要将格式字符串用花括号包裹起来并以`0:`开始（`{0:TheStringFormat}`）。如果格式字符串中花括号出现在开始，那么即使用单引号包裹起来，也需要进行转义。可以在前面加`{}`，也可以使用反斜线`\{...\}`：
-
-Other than in WPF, you need to surround the string format with curly braces and start with 0: (`{0:TheStringFormat}`). If the curly braces are at the beginning of the format string, even if sorrounded by single quotes, you need to escape them by either adding `{}` in front of it or by using backslashes `\{ ... \}`:
+与WPF不同，你需要将格式字符串用花括号包裹起来并以`0:`开始（`{0:TheStringFormat}`）。如果格式字符串中花括号出现在开始，那么即使用单引号包裹起来，也需要进行转义。可以在前面加`{}`，也可以使用反斜线`\{...\}`：
 
 **WPF:**
 

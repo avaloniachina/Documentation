@@ -4,7 +4,7 @@
 
 为了让Avalonia知晓视图模型中的属性已经发生了变化，视图模型必须要实现变化通知。最简单的方法是使你的视图模型类继承`ReactiveUI`中的`ReactiveObject`。
 
-然后为属性的setter增加调用`RaiseAndSetIfChanged`：
+然后在属性的setter中调用`RaiseAndSetIfChanged`：
 
 ```csharp
 using ReactiveUI;

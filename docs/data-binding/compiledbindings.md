@@ -39,7 +39,7 @@
 如果你不想对所有子节点开启编译绑定，也可以使用`CompiledBinding`标记。你仍然需要设置`DataType`，但可以省略`x:CompileBindings="True"`。
 
 ```markup
-<!-- Set DataType -->
+<!-- 设置 DataType -->
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="using:MyApp.ViewModels"

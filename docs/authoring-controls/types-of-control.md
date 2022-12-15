@@ -14,7 +14,7 @@
 
 {% hint style="info" %}  在 WPF/UWP 中你需要从 Control 类型继承来创建一个新的控件，但是在 Avalonia 中你需要从`TemplatedControl`继承。 {% endhint %}
 
-{% hint style="info" %} 如果你想在一个单独的文件中，为你创建的`TemplatedControl`提供一个`Style`,记住在你的程序中使用 [`StyleInclude`](https://docs.avaloniaui.net/docs/styling/styles) 导入你的文件. {% endhint %}
+{% hint style="info" %} 如果你想在一个单独的文件中为你创建的`TemplatedControl`提供一个`Style`，别忘记在你的应用程序中使用 [`StyleInclude`](https://docs.avaloniaui.net/docs/styling/styles) 导入这个文件。{% endhint %}
 
 ### Basic Control
 

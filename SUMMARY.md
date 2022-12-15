@@ -141,13 +141,13 @@
 ## 指南 <a href="#guides" id="guides"></a>
 
 * [🐣 基础](guides/basics/README.md)
-  * [Xaml介绍](guides/basics/introduction-to-xaml.md)
+  * [XAML 介绍](guides/basics/introduction-to-xaml.md)
   * [Code-behind](guides/basics/code-behind.md)
   * [MVVM 架构](guides/basics/mvvm-architecture.md)
   * [在UI线程上操作](guides/basics/accessing-the-ui-thread.md)
 * [🤿 深入](guides/deep-dives/README.md)
-  * [在Raspberry Pi上运行你的应用](guides/deep-dives/running-your-app-on-a-raspberry-pi.md)
-  * [在Raspberry Pi上运行你的应用（使用Raspbian Lite）](guides/deep-dives/running-your-app-on-a-raspberry-pi-with-raspbian-lite.md)
+  * [在树莓派上运行你的应用](guides/deep-dives/running-your-app-on-a-raspberry-pi.md)
+  * [在树莓派上运行你的应用（使用Raspbian Lite）](guides/deep-dives/running-your-app-on-a-raspberry-pi-with-raspbian-lite.md)
   * [ReactiveUI](guides/deep-dives/reactiveui/README.md)
     * [视图激活机制](guides/deep-dives/reactiveui/view-activation.md)
     * [路由](guides/deep-dives/reactiveui/routing.md)

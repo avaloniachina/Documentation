@@ -20,4 +20,4 @@
 
 `Control`是用户界面的基础 - 它们通过重写  `Visual.Render`  来使用几何图形来绘制自己。渲染方法。 像`TextBlock` 和 `Image` 这样的控件就属于这一类.
 
-{% hint style="info" %} 在 WPF/UWP你需要继承自 FrameworkElement 类型来创建一个新的控件, 但是在Avalonia 你需要继承自 `Control.` {% endhint %}
+{% hint style="info" %} 在 WPF/UWP 中你需要从 FrameworkElement 类型继承来创建一个新的控件，但是在 Avalonia 你需要从 `Control` 继承。 {% endhint %}

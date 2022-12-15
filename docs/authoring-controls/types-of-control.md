@@ -10,7 +10,7 @@
 
 ### Templated Controls
 
-`TemplatedControl`s 是最长使用的在多个程序之间共享的通用控件。他们初始状态下没有外观,这意味着它们可以为不同的主题、程序重新设计外观。  Avalonia定义的大多数标准控件都属于这一类。
+`TemplatedControl`是最常使用的、能在多个程序之间共享的通用控件。它们在初始状态下没有外观，这意味着它们可以为不同的主题和应用程序重新设计外观。Avalonia定义的大多数标准控件都属于这一类。
 
 {% hint style="info" %}  在 WPF/UWP你需要继承自 Control 类型来创建一个新的控件, 但是在Avalonia 你需要继承自`TemplatedControl.` {% endhint %}
 

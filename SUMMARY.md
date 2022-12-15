@@ -141,7 +141,7 @@
 ## 指南 <a href="#guides" id="guides"></a>
 
 * [🐣 基础](guides/basics/README.md)
-  * [Xaml介绍](guides/basics/introduction-to-xaml.md)
+  * [XAML 介绍](guides/basics/introduction-to-xaml.md)
   * [Code-behind](guides/basics/code-behind.md)
   * [MVVM 架构](guides/basics/mvvm-architecture.md)
   * [在UI线程上操作](guides/basics/accessing-the-ui-thread.md)

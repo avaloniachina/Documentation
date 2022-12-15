@@ -12,7 +12,7 @@
 
 `TemplatedControl`是最常使用的、能在多个程序之间共享的通用控件。它们在初始状态下没有外观，这意味着它们可以为不同的主题和应用程序重新设计外观。Avalonia定义的大多数标准控件都属于这一类。
 
-{% hint style="info" %}  在 WPF/UWP你需要继承自 Control 类型来创建一个新的控件, 但是在Avalonia 你需要继承自`TemplatedControl.` {% endhint %}
+{% hint style="info" %}  在 WPF/UWP 中你需要从 Control 类型继承来创建一个新的控件，但是在 Avalonia 中你需要从`TemplatedControl`继承。 {% endhint %}
 
 {% hint style="info" %} 如果你想在一个单独的文件中，为你创建的`TemplatedControl`提供一个`Style`,记住在你的程序中使用 [`StyleInclude`](https://docs.avaloniaui.net/docs/styling/styles) 导入你的文件. {% endhint %}
 

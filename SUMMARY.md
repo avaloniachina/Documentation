@@ -32,6 +32,7 @@
   * [在控件模板中实现绑定](docs/data-binding/binding-in-a-control-template.md)
   * [绑定 Classes 伪类](docs/data-binding/binding-classes.md)
   * [创建和绑定到附加属性](docs/data-binding/creating-and-binding-attached-properties.md)
+  * [Data Validation](docs/data-binding/data-validation.md)
 * [🎨 样式](docs/styling/README.md)
   * [样式](docs/styling/styles.md)
   * [选择器](docs/styling/selectors.md)

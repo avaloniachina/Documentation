@@ -95,7 +95,7 @@
 ```
 
 {% hint style="info" %} 
-字符串格式详情请阅读[微软文档](https://docs.microsoft.com/en-us/dotnet/api/system.string.format)
+格式字符串详情请阅读[微软文档](https://docs.microsoft.com/en-us/dotnet/api/system.string.format)
 {% endhint %}
 
 

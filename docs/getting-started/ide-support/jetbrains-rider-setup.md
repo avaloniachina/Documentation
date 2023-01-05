@@ -8,12 +8,13 @@
 
 2. 安装 Avalonia 模板
 
-   运行命令 `dotnet new -i Avalonia.Templates` 从计算机上的命令提示符中选择模板
+   运行命令 `dotnet new install Avalonia.Templates` 从计算机上的命令提示符中选择模板。
+   或者SDK版本在.NET 7之前运行命令 `dotnet new -i Avalonia.Templates`。
 
    输出类似如下：
 
    ```bash
-   $ dotnet new -i Avalonia.Templates
+   $ dotnet new install Avalonia.Templates
      Determining projects to restore...
      Restored /Users/danwalmsley/.templateengine/dotnetcli/v5.0.200/scratch/restore.csproj (in 706 ms).
 

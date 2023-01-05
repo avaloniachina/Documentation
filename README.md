@@ -32,4 +32,4 @@ Avalonia官方支持下列平台：
 
 如果您遇到了Avalonia的任何问题或者bug，请在[GitHub](https://github.com/AvaloniaUI/Avalonia)上创建一个issue。我们在[Telegram](https://t.me/Avalonia)上活跃的开发者社区也是项目的绝佳资源。
 
-除了社区支持之外，我们还提供一系列商业支持计划，优先援助核心贡献者。您可以从[我们的网站](https://avaloniaui.net/support.html)上了解有关这些计划的更多信息。
+除了社区支持之外，我们还提供一系列商业支持计划，优先援助核心贡献者。您可以从[我们的网站](https://avaloniaui.net/Support)上了解有关这些计划的更多信息。

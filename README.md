@@ -1,6 +1,6 @@
 # 👋 欢迎
 
-欢迎访问Avalonia文档，Avalonia是一个跨平台的.NET框架，用于构建漂亮、现代的图形用户界面`GUI`。使用Avalonia，您可以从单个代码库创建适用于Windows、macOS、 Linux、iOS、Android和Web Assembly的.NET GUI应用程序。
+欢迎访问Avalonia文档，Avalonia是一个跨平台的.NET框架，用于构建漂亮、现代的图形用户界面（GUI）。使用Avalonia，您可以从单个代码库创建适用于Windows、macOS、 Linux、iOS、Android和Web Assembly的原生应用程序。
 
 ## 💻 支持的 .NET 版本
 

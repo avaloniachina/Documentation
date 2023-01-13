@@ -9,13 +9,13 @@
 ```csharp
 class Program
 {
-  // This method is needed for IDE previewer infrastructure
+  // 此方法被用在IDE预览器的基础结构上
   public static AppBuilder BuildAvaloniaApp() 
     => AppBuilder.Configure<App>().UsePlatformDetect();
 
-  // The entry point. Things aren't ready yet, so at this point
-  // you shouldn't use any Avalonia types or anything that expects
-  // a SynchronizationContext to be ready
+  // 程序入口点。一切还没有准备就绪，
+  // 因此在这里你不应该使用任何Avalonia的类型，
+  // 也不要妄想SynchronizationContext已经就绪
   public static int Main(string[] args) 
     => BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
 }
@@ -81,26 +81,26 @@ public override void OnFrameworkInitializationCompleted()
 ```csharp
 class Program
 {
-  // This method is needed for IDE previewer infrastructure
+  // 此方法被用在IDE预览器的基础结构上
   public static AppBuilder BuildAvaloniaApp() 
     => AppBuilder.Configure<App>().UsePlatformDetect();
 
-  // The entry point. Things aren't ready yet, so at this point
-  // you shouldn't use any Avalonia types or anything that expects
-  // a SynchronizationContext to be ready
+  // 程序入口点。一切还没有准备就绪，
+  // 因此在这里你不应该使用任何Avalonia的类型，
+  // 也不要妄想SynchronizationContext已经就绪
   public static int Main(string[] args) 
     => BuildAvaloniaApp().Start(AppMain, args);
 
-  // Application entry point. Avalonia is completely initialized.
+  // 应用程序入口点。Avalonia已完全初始化。
   static void AppMain(Application app, string[] args)
   {
-     // A cancellation token source that will be used to stop the main loop
+     // 用于停止主循环的取消令牌源
      var cts = new CancellationTokenSource();
      
-     // Do you startup code here
+     // 这里有启动代码吗
      new Window().Show();
 
-     // Start the main loop
+     // 启动主循环
      app.Run(cts.Token);
   }
 }

@@ -2,7 +2,7 @@
 
 Avalonia 完全支持控件和任意 .NET 对象 [绑定](../../data-binding/bindings.md)。可以在 XAML 或代码中设置数据绑定，并支持下列特性：
 
-* 多种绑定模式：单向绑定、双向绑定、单次绑定和单向更新源
+* 多种绑定模式：单向绑定、双向绑定、单次绑定和单向更新源（`OneWay`, `TwoWay`, `OneTime` or `OneWayToSource`）
 * 绑定 [数据上下文](../../data-binding/the-datacontext.md)
 * 绑定 [其它控件](../../data-binding/binding-to-controls.md)
 * 绑定 [`Tasks和Observables`](../../data-binding/binding-to-tasks-and-observables.md)

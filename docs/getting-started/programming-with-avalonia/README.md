@@ -1,6 +1,6 @@
 # 用 Avalonia 开发
 
-Avalonia 允许使用 [XAML 标记语言](https://docs.avaloniaui.net/guides/basics/introduction-to-xaml)开发应用程序，使用C\#\（或其他的.NET语言）编码。通常使用 `XAML` 标记来实现应用程序的外观，使用代码来实现其行为。
+Avalonia 允许使用 [XAML 标记语言](https://docs.avaloniaui.net/guides/basics/introduction-to-xaml)开发应用程序，使用C#（或其他的.NET语言）编码。通常使用 `XAML` 标记来实现应用程序的外观，使用代码来实现其行为。
 
 ## 标记(Markup)
 

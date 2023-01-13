@@ -14,7 +14,7 @@
 
 你可以通过添加其他 `<AvaloniaResource>` 元素来使用所需的任何文件。
 
-注意到，我们在这里提到的是**资产** (Assets) ，而 MSBuild 项称为 Avalonia **资源** (resource)。资产在内部存储为[.NET 资源](https://docs.microsoft.com/zh-cn/visualstudio/ide/managing-application-resources-dotnet)。但因为与术语“资源”与[XAML 资源](../styling/resources.md)冲突，因此我们统一将其称为“资产”。
+注意到，我们在这里提到的是**资产** (Assets) ，而 MSBuild 项称其为 Avalonia **资源** (resource)。资产在内部存储为[.NET 资源](https://docs.microsoft.com/zh-cn/visualstudio/ide/managing-application-resources-dotnet)。但因为术语“资源”与[XAML 资源](../styling/resources.md)冲突，因此我们统一将其称为“资产”。
 
 ### 引用资产 <a id="referencing-assets"></a>
 

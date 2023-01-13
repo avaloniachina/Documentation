@@ -17,7 +17,7 @@
 5. 在“名称”栏输入窗体名称
 6. 单击“添加”按钮
 
-### .NET Core 脚手架 <a id="net-core-cli"></a>
+### .NET Core 命令行接口 <a id="net-core-cli"></a>
 
 运行这条命令，将 `[namespace]` 替换为要在其中创建窗体的命名空间，`[name]` 替换为窗体的名称
 

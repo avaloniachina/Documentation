@@ -1,10 +1,10 @@
 # 转换绑定值
 
-### Negating Values <a href="negating-values" id="negating-values"></a>
+### 否定值 <a href="negating-values" id="negating-values"></a>
 
-Often you will need to negate a value that you're binding to. A frequent use for this is to show/hide a control or to enable/disable it. You can negate a binding value by prepending a "bang" operator: `!`.
+您经常需要对绑定的值取反。常见的用法有显示/隐藏控件或启用/禁用控件。您可以通过在绑定值前面加上运算符`!`来取反。
 
-For example you might want to show one control when another control is disabled.
+例如，您可能希望在禁用一个控件时显示另一个控件。
 
 ```markup
 <StackPanel>
@@ -13,7 +13,7 @@ For example you might want to show one control when another control is disabled.
 </StackPanel>
 ```
 
-Negation also works when binding to non-boolean values. First of all, the value is converted to a boolean using `Convert.ToBoolean` and the result from this is negated. Because the integer value `0` is considered `false` and all other integer values are considered `true`, you can use this to show a message when a collection is empty:
+当绑定到非布尔值时，取反也有效。首先，使用`Convert.ToBoolean`将值转换为布尔值，并对结果取反。由于整数值`0`被视为`false`，而所有其他整数值都被视为`true`，因此当集合为空时，可以使用此方式显示消息：
 
 ```markup
 <Panel>
@@ -22,7 +22,7 @@ Negation also works when binding to non-boolean values. First of all, the value 
 </Panel>
 ```
 
-A "double-bang" can be used to convert a non-boolean value to a boolean value. For example to hide a control when a collection is empty:
+双感叹号可用于将非布尔值转换为布尔值。例如，要在集合为空时隐藏控件：
 
 ```markup
 <Panel>
@@ -30,13 +30,13 @@ A "double-bang" can be used to convert a non-boolean value to a boolean value. F
 </Panel>
 ```
 
-### Binding Converters <a href="binding-converters" id="binding-converters"></a>
+### 绑定转换器 <a href="binding-converters" id="binding-converters"></a>
 
-For more advanced conversions, Avalonia supports [`IValueConverter`](https://docs.microsoft.com/en-gb/dotnet/api/system.windows.data.ivalueconverter?view=netframework-4.7.1) the same as other XAML frameworks.
+对于更高级的转换，和其他XAML框架一样，Avalonia支持[`IValueConverter`](https://docs.microsoft.com/en-gb/dotnet/api/system.windows.data.ivalueconverter?view=netframework-4.7.1)
 
-> Note: The `IValueConverter` interface is not available in .NET standard 2.0 so we ship our own, in the `Avalonia.Data.Converters` namespace.
+> 注意：`IValueConverter`接口在.NET标准2.0中不可用，因此我们在`Avalonia.Data.Converters`命名空间中提供了自己的接口。
 
-Usage is identical to other XAML frameworks:
+用法与其他XAML框架相同：
 
 ```markup
 <Window xmlns="https://github.com/avaloniaui"
@@ -51,40 +51,40 @@ Usage is identical to other XAML frameworks:
 </Window>
 ```
 
-### Built-in Converters <a href="built-in-converters" id="built-in-converters"></a>
+### 内置转换器 <a href="built-in-converters" id="built-in-converters"></a>
 
-Avalonia supplies a number of built-in value converters for common scenarios:
+Avalonia为常见场景提供了许多内置值转换器：
 
-| Converter                           | Description                                                          |
-| ----------------------------------- | -------------------------------------------------------------------- |
-| `StringConverters.IsNullOrEmpty`    |  Returns `true` if the input string is null or empty                 |
-| `StringConverters.IsNotNullOrEmpty` |  Returns `false` if the input string is null or empty                |
-| `ObjectConverters.IsNull`           |  Returns `true` if the input is null                                 |
-| `ObjectConverters.IsNotNull`        |  Returns `false` if the input is null                                |
-| `BoolConverters.And`                |  A multi-value converter that returns `true` if all inputs are true. |
-| `BoolConverters.Or`                 |  A multi-value converter that returns `true` if any input is true. |
+| 转换器                                 | 描述                                 |
+|-------------------------------------|------------------------------------|
+| `StringConverters.IsNullOrEmpty`    | 如果输入的字符串为null或empty，则返回`true`      |
+| `StringConverters.IsNotNullOrEmpty` | 如果输入的字符串不为null或empty，则返回`true`     |
+| `ObjectConverters.IsNull`           | 如果输入为null，则返回`true`                |
+| `ObjectConverters.IsNotNull`        | 如果输入为null，则返回`false`               |
+| `BoolConverters.And`                | 一种多值转换器，如果所有输入均为true，则返回`true`。    |
+| `BoolConverters.Or`                 | 一种多值转换器，如果其中任意输入为true，则返回`true`。   |
 
-You can see find list of default converters here: [Avalonia.Data.Converters Namespace](https://docs.avaloniaui.net/api/untitled/avalonia-ui-framework-23/avalonia-ui-framework-24#classtypes).
+您可以在此处查看默认转换器列表： [Avalonia.Data.Converters 命名空间](https://docs.avaloniaui.net/api/untitled/avalonia-ui-framework-23/avalonia-ui-framework-24#classtypes).
 
-### Examples
+### 示例
 
-Hiding a `TextBlock` if the bound text is null or empty:
+如果绑定文本为null或empty，则隐藏`TextBlock`：
 
 ```markup
 <TextBlock Text="{Binding MyText}"
            IsVisible="{Binding MyText, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
 ```
 
-Hiding a `ContentControl` if the bound content is null or empty:
+如果绑定内容为null或empty，则隐藏`ContentControl`：
 
 ```markup
 <ContentControl Content="{Binding MyContent}"
                 IsVisible="{Binding MyContent, Converter={x:Static ObjectConverters.IsNotNull}}"/>
 ```
 
-> from now on assume converters are imported as shown in the previous "Binding Converters" section
+> 从现在开始，假设转换器已导入，如上一节“绑定转换器”所示
 
-Convert text to specific case from a parameter
+根据不同参数将文本转换为特定大小写格式
 ```markup
 <TextBlock Text="{Binding TheContent, 
     Converter={StaticResource textCaseConverter},
@@ -107,15 +107,15 @@ public class TextCaseConverter : IValueConverter
                     return sourceText.ToUpper();
                 case "lower":
                     return sourceText.ToLower();
-                case "title": // Every First Letter Uppercase
+                case "title": // 首字母大写
                     var txtinfo = new System.Globalization.CultureInfo("en-US",false).TextInfo;
                     return txtinfo.ToTitleCase(sourceText);
                 default:
-                    // invalid option, return the exception below
+                    // 无效参数，在这里返回异常
                     break;
             }
         }
-        // converter used for the wrong type
+        // 用于错误类型的转换器
         return new BindingNotification(new InvalidCastException(), BindingErrorType.Error);
     }
 
@@ -126,8 +126,7 @@ public class TextCaseConverter : IValueConverter
 }
 ```
 
-
-Converting a bound object to different target types contextually
+在上下文中将绑定对象转换为不同的目标类型
 
 ```markup
 <Image Width="42" 
@@ -156,9 +155,9 @@ public class AnimalConverter : IValueConverter
                     case Cat:
                       img = @"icons/cat.png";
                       break;
-                    // etc. etc.
+                    // 等等
                 }
-                // see https://docs.avaloniaui.net/docs/controls/image
+                // 请看 https://docs.avaloniaui.net/docs/controls/image
                 return BitmapAssetValueConverter.Instance
                     .Convert(img, typeof(Bitmap), parameter, culture);
             }
@@ -168,7 +167,7 @@ public class AnimalConverter : IValueConverter
                     $"{animal.Name} \"{animal.NickName}\"" : animal.Name;
             }
         }
-        // converter used for the wrong type
+        // 用于错误类型的转换器
         return new BindingNotification(new InvalidCastException(), BindingErrorType.Error);
         
     }
@@ -180,6 +179,6 @@ public class AnimalConverter : IValueConverter
 }
 ```
 
-### Samples
+### 范例
 
 [ValueConverter Sample](https://github.com/AvaloniaUI/Avalonia.Samples/tree/main/src/Avalonia.Samples/MVVM/ValueConversionSample)

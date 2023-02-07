@@ -1,34 +1,34 @@
 # 与控件绑定
 
-As well as binding to a control's [`DataContext`](https://docs.avaloniaui.net/docs/data-binding/the-datacontext) you can also bind to other controls.
+类似绑定到控件的[`DataContext`](https://docs.avaloniaui.net/docs/data-binding/the-datacontext)，您还可以绑定到其他控件。
 
 {% hint style="info" %}
-Note that when you do this, the binding source is to the _control itself_ not the control's `DataContext`. If you want to bind to the control's `DataContext` then you'll need to specify that in the binding path.
+注意：当您这样做时，绑定源是到**控件本身**的，而不是控件的`DataContext`。如果要绑定到控件的`DataContext`，则需要指定在绑定路径中。
 {% endhint %}
 
-## Binding to a named control
+## 绑定到已命名控件
 
-If you want to bind to a property on another named control, you can use the control name prefixed by a `#` character.
+如果要绑定到另一个已命名控件的属性，可以使用以`#`字符为前缀的控件名称。
 
 ```markup
 <TextBox Name="other">
 
-<!-- Binds to the Text property of the "other" control -->
+<!-- 绑定到命名为“other”控件的Text属性 -->
 <TextBlock Text="{Binding #other.Text}"/>
 ```
 
-This is the equivalent to the long-form binding that will be familiar to WPF and UWP users:
+这相当于WPF和UWP开发者熟悉的长格式绑定：
 
 ```markup
 <TextBox Name="other">
 <TextBlock Text="{Binding Text, ElementName=other}"/>
 ```
 
-Avalonia supports both syntaxes but the short-form `#` syntax is less verbose.
+这两种语法Avalonia均支持，但缩写`#`语法显得不那么冗长。
 
-## Binding to an Ancestor <a id="binding-to-an-ancestor"></a>
+## 绑定到祖先<a id="binding-to-an-ancestor"></a>
 
-You can bind to the logical parent of the target using the `$parent` symbol:
+您可以使用`$parent`符号绑定到目标在逻辑上的父级：
 
 ```markup
 <Border Tag="Hello World!">
@@ -36,7 +36,7 @@ You can bind to the logical parent of the target using the `$parent` symbol:
 </Border>
 ```
 
-Or to an ancestor by adding an indexer to the `$parent` symbol:
+也可以通过在`$parent`符号添加索引器绑定到祖先级：
 
 ```markup
 <Border Tag="Hello World!">
@@ -46,9 +46,9 @@ Or to an ancestor by adding an indexer to the `$parent` symbol:
 </Border>
 ```
 
-The indexer is 0-based so `$parent[0]` is equivalent to `$parent`.
+索引器从0开始，因此`$parent[0]`等同于`$parent`。
 
-You can also bind to an ancestor by type:
+还可以按类型绑定到祖先：
 
 ```markup
 <Border Tag="Hello World!">
@@ -58,7 +58,7 @@ You can also bind to an ancestor by type:
 </Border>
 ```
 
-Finally, you can combine the indexer and the type:
+最后，您可以组合索引器和类型：
 
 ```markup
 <Border Tag="Hello World!">
@@ -70,7 +70,7 @@ Finally, you can combine the indexer and the type:
 </Border>
 ```
 
-If you need to include a XAML namespace in the ancestor type, you can do that using the `:` character as normal:
+如果需要在祖先类型中包含XAML命名空间，一般使用`:`字符：
 
 ```markup
 <local:MyControl Tag="Hello World!">
@@ -81,6 +81,6 @@ If you need to include a XAML namespace in the ancestor type, you can do that us
 ```
 
 {% hint style="warning" %}
-Avalonia also supports WPF/UWP's `RelativeSource` syntax which does something similar, but is _not_ the same. `RelativeSource` works on the _visual_ tree whereas the syntax given here works on the _logical_ tree.
+Avalonia还支持WPF/UWP的`RelativeSource`语法，它做了一些类似的事情，但**并不相同**。`RelativeSource`在**视觉树**上工作，而这里给出的语法在**逻辑树**上运行。
 {% endhint %}
 

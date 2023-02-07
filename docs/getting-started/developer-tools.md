@@ -82,7 +82,6 @@ dotnet add package Avalonia.Diagnostics --version 0.10.0
 
 {% hint style="info" %}
 如果赋值器的值绑定了一个资源，它将指示成一个圆圈后接资源键的形式。
-If setter value is bound to a resource it will be indicated by a circle followed by the resource key.
 {% endhint %}
 
 ![](<../../.gitbook/assets/image (27).png>)
@@ -106,6 +105,7 @@ If setter value is bound to a resource it will be indicated by a circle followed
 
 * 双击事件类型将选择并滚动到给定的事件类型
 * 双击控件类型（和/或名称）将导航到可视化树选项卡并选中该控件。
+{% endhint %}
 
 ![](<../../.gitbook/assets/image (29).png>)
 

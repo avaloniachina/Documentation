@@ -1,39 +1,39 @@
-# Binding to Tasks and Observables
+# 绑定到任务和可观察对象
 
-You can subscribe to the result of a task or an observable by using the `^` stream binding operator.
+您可以使用`^`流绑定运算符订阅任务或可观察对象。
 
-## Example 1: Binding to an observable
+## 示例1：绑定到可观察对象
 
-For example if `DataContext.Name` is an `IObservable<string>` then the following example will bind to the length of each string produced by the observable as each value is produced
+例如，如果`DataContext.Name`是一个`IObservable<string>`，那么下面的示例将绑定到每个值生成时可观察对象的每个字符串的长度。
 
 ```markup
 <TextBlock Text="{Binding Name^.Length}"/>
 ```
 
-## Example 2: Binding to a task
+## 示例2: 绑定到任务
 
-If you need to do some heavy work to load the content of a property you can bind to the result of an `async Task<TResult>`
+如果需要做一些繁重的工作来加载属性的内容，则可以绑定到`async Task<TResult>`的结果。
 
-Consider you have the following view model which generates some text in a long running process:
+假设您有下列的视图模型，它在一个耗时的任务中生成一些文本：
 
 ```csharp
 public Task<string> MyAsyncText => GetTextAsync();
 
 private async Task<string> GetTextAsync()
 {
-  await Task.Delay(1000); // The delay is just for demonstration purpose
+  await Task.Delay(1000); // 延时只是为了演示
   return "Hello from async operation";
 }
 ```
 
-You can bind to the result in the following way: 
+您可以通过以下方式绑定到结果：
 ```markup
 <TextBlock Text="{Binding MyAsyncText^, FallbackValue='Wait a second'}" />
 ```
 
 
 {% hint style="info" %}
-Note: You can use `FallbackValue` to display some loading indicator. 
+注：您可以使用`FallbackValue`显示一些加载指示符。 
 {% endhint %}
 
 

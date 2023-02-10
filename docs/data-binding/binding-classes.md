@@ -1,6 +1,6 @@
-# Binding Classes
+# 绑定Class
 
-In Avalonia, you also can bind classes. Sometimes it could be useful to switch classes depending on some logic, and for those purposes, you can use Binding Classes API. There is the sample usage of Binding Classes. We have two different styles and we want to switch between them depending on `MyProperty` state.
+在Avalonia中，您还可以绑定Class。有时，根据某些逻辑切换类可能很有用，为此，可以使用Binding Classes API。下面是Binding Classes的示例用法：这里有两种不同的样式，我们希望根据`MyProperty`的状态在它们之间切换。
 
 ```markup
  <ListBox Items="{Binding MyItems}">
@@ -25,5 +25,5 @@ In Avalonia, you also can bind classes. Sometimes it could be useful to switch c
  </ListBox>
 ```
 
-When you bind to classes Avalonia would expect bool value. This API was introduced in 0.10.1
+当您绑定到Class时，Avalonia将期望布尔值。此API在0.10.1中引入
 

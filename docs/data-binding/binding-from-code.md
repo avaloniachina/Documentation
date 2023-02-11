@@ -1,19 +1,19 @@
-# Binding from Code
+# 从代码绑定
 
-Binding from code in Avalonia works somewhat differently to WPF/UWP. At the low level, Avalonia's binding system is based on Reactive Extensions' `IObservable` which is then built upon by XAML bindings \(which can also be instantiated in code\).
+Avalonia中的代码绑定与WPF/UWP的工作方式有些不同。在低级别上，Avalonia的绑定系统基于Reactive Extensions`IObservable`，然后由XAML绑定构建（也可以在代码中实例化）。
 
-## Subscribing to Changes to a Property <a id="subscribing-to-changes-to-a-property"></a>
+## 订阅对属性的更改 <a id="subscribing-to-changes-to-a-property"></a>
 
-You can subscribe to changes on a property by calling the `GetObservable` method. This returns an `IObservable<T>` which can be used to listen for changes to the property:
+您可以通过调用`GetObservable`方法订阅对属性的更改。这将返回一个`IObservable<T>`，它可用于监听属性的更改：
 
 ```csharp
 var textBlock = new TextBlock();
 var text = textBlock.GetObservable(TextBlock.TextProperty);
 ```
 
-Each property that can be subscribed to has a static readonly field called `[PropertyName]Property` which is passed to `GetObservable` in order to subscribe to the property's changes.
+每个可以被订阅的属性都有一个名为`[PropertyName]Property`的静态只读字段，该字段被传递给`GetObservable`以订阅对属性的更改。
 
-`IObservable` \(part of Reactive Extensions, or rx for short\) is out of scope for this guide, but here's an example which uses the returned observable to print a message with the changing property values to the console:
+`IObservable`（Reactive Extensions的一部分，或者简称rx）超出了本指南的范围，但这里有一个示例，它使用返回的可观察对象(observable)将带有更改属性值的消息打印到控制台：
 
 ```csharp
 var textBlock = new TextBlock();
@@ -21,38 +21,38 @@ var text = textBlock.GetObservable(TextBlock.TextProperty);
 text.Subscribe(value => Console.WriteLine(value + " Changed"));
 ```
 
-When the returned observable is subscribed, it will return the current value of the property immediately and then push a new value each time the property changes. If you don't want the current value, you can use the rx `Skip` operator:
+当订阅了返回的可观察对象后，它将立即返回属性的当前值，然后在每次属性更改时推送一个新值。如果不需要当前值，可以使用rx `Skip`运算符：
 
 ```csharp
 var text = textBlock.GetObservable(TextBlock.TextProperty).Skip(1);
 ```
 
-## Binding to an observable <a id="binding-to-an-observable"></a>
+## 绑定到可观察对象 <a id="binding-to-an-observable"></a>
 
-You can bind a property to an observable using the `AvaloniaObject.Bind` method:
+您可以使用`AvaloniaObject.Bind`方法将属性绑定到可观察对象：
 
 ```csharp
-// We use an Rx Subject here so we can push new values using OnNext
+// 我们在这里使用Rx Subject，以便我们可以使用OnNext推送新值
 var source = new Subject<string>();
 var textBlock = new TextBlock();
 
-// Bind TextBlock.Text to source
+// 将TextBlock.Text绑定到源
 var subscription = textBlock.Bind(TextBlock.TextProperty, source);
 
-// Set textBlock.Text to "hello"
+// 将textBlock.Text设置为“hello”
 source.OnNext("hello");
-// Set textBlock.Text to "world!"
+// 将textBlock.Text设置为“world!”
 source.OnNext("world!");
 
-// Terminate the binding
+// 终止绑定
 subscription.Dispose();
 ```
 
-Notice that the `Bind` method returns an `IDisposable` which can be used to terminate the binding. If you never call this, then then binding will automatically terminate when the observable finishes via `OnCompleted` or `OnError`.
+请注意，`Bind`方法返回可用于终止绑定的`IDisposable`。如果您从未调用过，那么绑定将在可观察对象通过`OnCompleted`或`OnError`完成时自动终止。
 
-## Setting a binding in an object initializer <a id="setting-a-binding-in-an-object-initializer"></a>
+## 在对象初始值设定项中设置绑定 <a id="setting-a-binding-in-an-object-initializer"></a>
 
-It is often useful to set up bindings in object initializers. You can do this using the indexer:
+在对象初始化器中设置绑定通常很有用。可以使用索引器执行此操作：
 
 ```csharp
 var source = new Subject<string>();
@@ -64,7 +64,7 @@ var textBlock = new TextBlock
 };
 ```
 
-Using this method you can also easily bind a property on one control to a property on another:
+使用此方法，您还可以轻松地将一个控件上的属性绑定到另一个控件的属性：
 
 ```csharp
 var textBlock1 = new TextBlock();
@@ -76,17 +76,17 @@ var textBlock2 = new TextBlock
 };
 ```
 
-Of course the indexer can be used outside object initializers too:
+当然，索引器也可以在对象初始化器的外部使用：
 
 ```csharp
 textBlock2[!TextBlock.TextProperty] = textBlock1[!TextBlock.TextProperty];
 ```
 
-The only downside of this syntax is that no `IDisposable` is returned. If you need to manually terminate the binding then you should use the `Bind` method.
+此语法的唯一缺点是不返回`IDisposable`。如果需要手动终止绑定，则应使用`Bind`方法。
 
-## Transforming binding values <a id="transforming-binding-values"></a>
+## 转换绑定值 <a id="transforming-binding-values"></a>
 
-Because we're working with observables, we can easily transform the values we're binding!
+因为我们使用的是可观测对象，所以我们可以很容易地转换绑定的值！
 
 ```csharp
 var source = new Subject<string>();
@@ -98,9 +98,9 @@ var textBlock = new TextBlock
 };
 ```
 
-## Using XAML bindings from code <a id="using-xaml-bindings-from-code"></a>
+## 使用代码中的XAML绑定 <a id="using-xaml-bindings-from-code"></a>
 
-Sometimes when you want the additional features that XAML bindings provide, it's easier to use XAML bindings from code. For example, using only observables you could bind to a property on `DataContext` like this:
+有时，当您需要XAML绑定提供的其他功能时，从代码中使用XAML绑定会更简便。例如，仅使用可观测对象，就可以绑定到`DataContext`上的属性，如下所示：
 
 ```csharp
 var textBlock = new TextBlock();
@@ -110,7 +110,7 @@ var viewModelProperty = textBlock.GetObservable(TextBlock.DataContext)
 textBlock.Bind(TextBlock.TextProperty, viewModelProperty);
 ```
 
-However, it might be preferable to use a XAML binding in this case:
+但是，在这种情况下，最好使用XAML绑定：
 
 ```csharp
 var textBlock = new TextBlock
@@ -119,7 +119,7 @@ var textBlock = new TextBlock
 };
 ```
 
-Or, if you need an `IDisposable` to terminate the binding:
+或者，如果需要`IDisposable`来终止绑定：
 
 ```csharp
 var textBlock = new TextBlock();
@@ -128,17 +128,17 @@ var subscription = textBlock.Bind(TextBlock.TextProperty, new Binding("Name"));
 subscription.Dispose();
 ```
 
-## Subscribing to a Property on Any Object <a id="subscribing-to-a-property-on-any-object"></a>
+## 订阅任意对象的属性 <a id="subscribing-to-a-property-on-any-object"></a>
 
-The `GetObservable` method returns an observable that tracks changes to a property on a single instance. However, if you're writing a control you may want to implement an `OnPropertyChanged` method which isn't tied to an instance of an object.
+`GetObservable`方法返回跟踪单个实例上属性更改的可观察对象。但是，如果正在编写控件，则可能需要实现未绑定到对象实例的`OnPropertyChanged`方法。
 
-To do this you can subscribe to [`AvaloniaProperty.Changed`](http://reference.avaloniaui.net/api/Avalonia/AvaloniaProperty/65237C52) which is an observable which fires _every time the property is changed on any instance_.
+要做到这一点，您可以订阅[`AvaloniaProperty.Changed`](http://reference.avaloniaui.net/api/Avalonia/AvaloniaProperty/65237C52)，这是一个可观察对象，**在任何实例上更改属性时都会触发**。
 
-> In WPF this is done by passing a static `PropertyChangedCallback` to the `DependencyProperty` registration method, but this only allows the control author to register a property changed callback.
+> 在WPF中，这是通过将静态`PropertyChangedCallback`传递给`DependencyProperty`注册方法来完成的，但这只允许控件开发者注册属性更改的回调。
 
-In addition there is an `AddClassHandler` extension method which can automatically route the event to a method on your control.
+此外，还有一个`AddClassHandler`扩展方法，它可以自动将事件路由到控件上的方法。
 
-For example if you want to listen to changes to your control's `Foo` property you'd do it like this:
+例如，如果您想监听控件的`Foo`属性的更改，可以这样做：
 
 ```csharp
 static MyControl()
@@ -148,13 +148,13 @@ static MyControl()
 
 private void FooChanged(AvaloniaPropertyChangedEventArgs e)
 {
-    // The 'e' parameter describes what's changed.
+    // e参数描述了更改的内容。
 }
 ```
 
-## Binding to `INotifyPropertyChanged` objects
+## 绑定到`INotifyPropertyChanged`对象
 
-Binding to objects that implements `INotifyPropertyChanged` is also available.
+还可以绑定到实现了`INotifyPropertyChanged`的对象。
 
 ```csharp 
 var textBlock = new TextBlock();

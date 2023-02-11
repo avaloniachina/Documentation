@@ -1,6 +1,6 @@
 # 在控件模板中绑定
 
-当您创建控件模板并希望绑定到模板化的父级时，可以使用：
+当您创建控件模板并希望绑定到模板的父级时，可以使用：
 
 ```markup
 <TextBlock Name="tb" Text="{TemplateBinding Caption}"/>

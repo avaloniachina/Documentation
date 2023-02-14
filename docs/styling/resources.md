@@ -1,10 +1,10 @@
 # 资源
 
-Often, styles and controls will need to share resources such as \(but not limited to\) brushes and colors. You can put such resources in the `Resources` dictionary which is available on every style and control and then refer to these resources elsewhere.
+通常，样式和控件需要共享资源，比如（但不限于）笔刷(brush)和颜色(color)。你可以把这些资源放在每个样式和控件共有的 `Resources`字典里，然后在其他地方引用这些资源。
 
-## Declaring resources <a id="declaring-resources"></a>
+## 定义资源 <a id="declaring-resources"></a>
 
-If a resource is to be available to your entire application, you can define it in `App.xaml`/`App.axaml`:
+如果一个资源要作用在整个应用程序上，你可以在`App.xaml`/`App.axaml`中定义它。
 
 ```markup
 <Application xmlns="https://github.com/avaloniaui"
@@ -16,7 +16,7 @@ If a resource is to be available to your entire application, you can define it i
 </Application>
 ```
 
-Alternatively you can declare resources on a `Window` or `UserControl`: the resource will be available to the `Window`/`UserControl` and its children:
+另外，你可以在`Window`或`UserControl`上声明资源：该资源将可用于`Window`/`UserControl`及其子代。
 
 ```markup
 <UserControl xmlns="https://github.com/avaloniaui"
@@ -28,7 +28,7 @@ Alternatively you can declare resources on a `Window` or `UserControl`: the reso
 </UserControl>
 ```
 
-Or in fact any control at all:
+或者实际上对任何控件都可用：
 
 ```markup
 <Window xmlns="https://github.com/avaloniaui"
@@ -42,7 +42,7 @@ Or in fact any control at all:
 </Window>
 ```
 
-You can also declare resources on styles:
+你也可以在样式上声明资源。
 
 ```markup
 <Style Selector="TextBlock.warn">
@@ -52,9 +52,9 @@ You can also declare resources on styles:
 </Style>
 ```
 
-## Referencing resources <a id="referencing-resources"></a>
+## 引用资源 <a id="referencing-resources"></a>
 
-You can references resources from controls using the `{DynamicResource}` markup extensions, e.g.:
+你可以使用`{DynamicResource}`标记扩展从控件中引用资源，例如：
 
 ```markup
 <Border Background="{DynamicResource Warning}">
@@ -62,16 +62,16 @@ You can references resources from controls using the `{DynamicResource}` markup 
 </Border>
 ```
 
-Alternatively there is the `StaticResource` markup extension which has a few limitations with respect to `DynamicResource`:
+另外，还有`StaticResource`标记扩展，与`DynamicResource`相比，它有一些限制：
 
-* It will not respond to changes in the resource
-* The resource needs to be declared in the same XAML file
+* 它不会响应资源的变化
+* 该资源需要在同一个XAML文件中声明。
 
-In return, `StaticResource` doesn't need to add an event handler to listen for changes in resources which means it uses slightly less memory.
+作为交换，`StaticResource`不需要添加事件处理程序来监听资源的变化，这意味着它使用的内存较少。
 
-## Overriding resources <a id="overriding-resources"></a>
+## 覆盖资源 <a id="overriding-resources"></a>
 
-Resources are resolved by walking up the logical tree from the point of the `DynamicResource` or `StaticResource` until a resource with the requested key is found. This means that resources can be "overridden" in sub-trees of the application, for example:
+通过从`DynamicResource`或`StaticResource`节点向上遍历逻辑树，直到找到满足要求的键(key)的资源。这意味着资源可以在应用程序的子树中被**覆盖**，例如：
 
 ```markup
 <UserControl xmlns="https://github.com/avaloniaui"
@@ -93,11 +93,11 @@ Resources are resolved by walking up the logical tree from the point of the `Dyn
 </UserControl>
 ```
 
-Here's the `Border`'s background will be `Orange` because its parent `StackPanel` has "overridden" the `Warning` resource from the `Yellow` declared on the `UserControl`.
+这里`Border`的背景色是`Orange`，因为它的父级`StackPanel`已经**覆盖**了从`UserControl`上声明的`Yellow`中的`Warning`资源。
 
-## Merged resource dictionaries <a id="merged-resource-dictionaries"></a>
+## 合并的资源字典 <a id="merged-resource-dictionaries"></a>
 
-The `Resources` property on each control and style is of type `ResourceDictionary`. Resource dictionaries can also include other resource dictionaries by making use of the `MergedDictionaries` property. To include a resource dictionary in another you can use the `ResourceInclude` class, e.g.:
+每个控件和样式的`Resources`属性的类型为`ResourceDictionary`。通过使用`MergedDictionaries`属性，资源字典还可以包括其他资源字典。要在另一个资源字典中包括资源字典，可以使用`ResourceInclude`类，例如：
 
 ```markup
 <Window.Resources>
@@ -110,18 +110,18 @@ The `Resources` property on each control and style is of type `ResourceDictionar
 </Window.Resources>
 ```
 
-Where `AnotherResourceDictionary` is a XAML file with a root of `ResourceDictionary` and is included as an [asset](../getting-started/assets.md) in the application.
+其中，`AnotherResourceDictionary`是根为`ResourceDictionary`的XAML文件，并作为[资产(asset)](../getting-started/assets.md)包含在应用程序中。
 
-## Resource resolution <a id="resource-resolution"></a>
+## 资源解析 <a id="resource-resolution"></a>
 
-As mentioned above, resources are resolved by walking up the logical tree from the point of the `DynamicResource` or `StaticResource` until a resource with the requested key is found. However the presence of styles and merged dictionaries complicates this somewhat. The precedence is as follows:
+如上所述，通过从`DynamicResource`或`StaticResource`节点向上遍历逻辑树来解析资源，直到找到满足条件的键(key)的资源。然而，样式和合并字典的存在使这一点有些复杂。优先级如下：
 
-* Control resources
-  * Merged dictionaries
-* Style resources
-  * Merged dictionaries
+* 控件资源(Control resources)
+  * 合并字典(Merged dictionaries)
+* 样式资源(Style resources)
+  * 合并字典(Merged dictionaries)
 
-For the example application below, resource lookup for a resource defined on the `Border` control would follow the order indicated in `[]` brackets:
+如下所示的应用程序，`Border`控件上定义的资源的查找顺序将遵循`[]`括号中指示的顺序：
 
 ```text
 Application
@@ -150,7 +150,7 @@ Window
      |- Border
 ```
 
-## Theme resources <a id="theme-resources"></a>
+## 主题资源 <a id="theme-resources"></a>
 
-Themes will usually define brushes, colors and other settings as resources. By changing these resources one can e.g. switch from a dark to a light theme. The resources defined will usually be specific to the theme in use but you can see the resources defined by the default theme [here](https://github.com/AvaloniaUI/Avalonia/blob/master/src/Avalonia.Themes.Default/Accents/BaseLight.xaml).
+主题通常将笔刷、颜色和其他设置定义为资源。通过改变这些资源，例如可以从暗黑主题切换到明亮主题。定义的资源通常特定于使用中的主题，但您可以[在这里](https://github.com/AvaloniaUI/Avalonia/blob/master/src/Avalonia.Themes.Simple/Accents/Base.xaml)看到默认主题定义的资源。
 

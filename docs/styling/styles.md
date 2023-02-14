@@ -126,17 +126,17 @@ PseudoClasses.Set(":className", bool);
 
 **选择器**使用自定义选择器语法选取控件，该语法与CSS选择器使用的语法非常相似。一些选择器的示例：
 
-| 选择器                                  | 描述                                        |
-|:-------------------------------------|:------------------------------------------|
-| `Button`                             | 选取所有`Button`控件                            |
-| `Button.red`                         | 选取所有带有`red`样式类的`Button`控件                 |
-| `Button.red.large`                   | 选取所有带有`red`和`large`样式类的`Button`控件         |
-| `Button:focus`                       | 选取所有带有`:focus`伪类的`Button`控件               |
-| `Button.red:focus`                   | 选取所有带有`red`样式类和`:focus`伪类的`Button`控件      |
-| `Button#myButton`                    | 选取一个命名为`myButton`的`Button`控件              |
-| `StackPanel Button.foo`              | 选取所有在`StackPanel`的后代中带有`foo`类的`Button`控件  |
-| `StackPanel > Button.foo`            | 选取所有在`StackPanel`的下一代中带有`foo`类的`Button`控件 |
-| `Button /template/ ContentPresenter` | 选取Button的模板内所有ContentPresenter控件          |
+| 选择器                                  | 描述                                         |
+|:-------------------------------------|:-------------------------------------------|
+| `Button`                             | 选取所有`Button`控件                             |
+| `Button.red`                         | 选取所有带有`red`样式类的`Button`控件                  |
+| `Button.red.large`                   | 选取所有带有`red`和`large`样式类的`Button`控件          |
+| `Button:focus`                       | 选取所有带有`:focus`伪类的`Button`控件                |
+| `Button.red:focus`                   | 选取所有带有`red`样式类和`:focus`伪类的`Button`控件       |
+| `Button#myButton`                    | 选取一个命名为`myButton`的`Button`控件               |
+| `StackPanel Button.foo`              | 选取在`StackPanel`的后代中带有`foo`类的所有`Button`控件   |
+| `StackPanel > Button.foo`            | 选取在`StackPanel`的直接子代中带有`foo`类的所有`Button`控件 |
+| `Button /template/ ContentPresenter` | 选取Button的模板内所有ContentPresenter控件           |
 
 想要了解更多信息，请浏览[选择器文档](selectors.md).
 

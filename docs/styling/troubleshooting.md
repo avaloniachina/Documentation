@@ -1,16 +1,16 @@
 # 疑难解答
 
-Avalonia styling system is a mix of XAML and CSS styling approaches, so developers with knowledge of only one of these technologies can be confused by details of another one.
+Avalonia样式系统是XAML和CSS样式方法的混合体，因此只了解其中一种技术的开发人员可能会被另一种技术细节所迷惑。
 
-Let's imagine a problem when one or all style setters are not applied to the control. Below we will list common possible reasons and solutions.
+让我们想象一个问题，当一个或所有样式设置器都未应用于控件时，下面我们列出常见的可能原因和解决方案。
 
-### Selector targets a control that doesn't exist
+### 选择器以不存在的控件为目标
 
-Avalonia selectors, like CSS selectors, do not raise any errors or warnings, when there are no controls which can be matched by the selector. This includes using a name or class that doesn't exist or a child selector when there are no children to match the inner selector. The reason is simple, one style can target many controls, that can be created or removed at runtime, so there is no possible way to validate the selector.
+类似CSS选择器，当没有控件可以被选择器匹配时，Avalonia选择器不会引发任何错误或警告。这包括使用不存在的名称或类，或者当没有子选择器可以匹配内部选择器时使用一个子选择器。原因很简单，一种样式可以针对许多控件，这些控件可以在运行时创建或删除，因此不可能验证选择器。
 
-### Target property is overridden by another style
+### 目标属性被另一种样式覆盖
 
-Styles are applied in order of declaration. If there are **multiple** style files that target the same control property, one style can override the other:
+样式按声明顺序应用。如果有**多个**样式文件以同一控件属性为目标，则一种样式可以覆盖另一种样式：
 
 {% code title="Styles2.axaml" %}
 
@@ -28,7 +28,7 @@ Styles are applied in order of declaration. If there are **multiple** style file
 <Style Selector="TextBlock.header">
     <Style Property="Foreground" Value="Blue" />
     <Style Property="FontSize" Value="16" />
-</Style>c
+</Style>
 ```
 
 {% endcode %}
@@ -42,13 +42,13 @@ Styles are applied in order of declaration. If there are **multiple** style file
 
 {% endcode %}
 
-Here styles from file **Styles1.axaml** were applied first, so setters in styles of file **Styles2.axaml** take priority. The resulting TextBlock will have FontSize="16" and Foreground="Green". The same order prioritization happens within style files also.
+这里首先应用了文件**Styles1.axaml**中的样式，因此优先应用文件**Styles2.axaml**中的样式设置器。生成的TextBlock属性有FontSize="16"和Foreground="Green"。样式文件中也会发生相同的顺序优先级排序。
 
-### Locally set Properties override Styles
+### 本地设置的属性覆盖了样式
 
-Similarly, to WPF, Avalonia properties can have multiple values, often of different priorities.&#x20;
+与WPF类似，Avalonia属性可以有多个值，通常具有不同的优先级；
 
-In this example you can see that local value (defined directly on the control) has higher priority than style value, so text block will have red foreground:
+在本例中，您可以看到局部值（直接在控件上定义）的优先级高于样式值，因此文本块显示红色的前景色：
 
 ```markup
 <TextBlock Classes="header" Foreground="Red" />
@@ -58,15 +58,15 @@ In this example you can see that local value (defined directly on the control) h
 </Style>
 ```
 
-You can see the full list of value priorities in the [BindingPriority](http://reference.avaloniaui.net/api/Avalonia.Data/BindingPriority/) enum, where lower enum values have higher priority. For example `Animation` values have the highest priority and even override local values.
+您可以在[BindingPriority](http://reference.avaloniaui.net/api/Avalonia.Data/BindingPriority/)中查看值优先级的完整枚举列表，其中较小的枚举值具有较高的优先级。例如，`Animation`值具有最高优先级，甚至能覆盖本地值。
 
 {% hint style="info" %}
-Some default Avalonia styles use local values in their templates instead of template bindings or styles-setters, which makes it impossible to update template property without replacing whole template.
+一些默认的Avalonia样式在其模板中使用本地值而不是模板绑定或样式设置器，这使得在不替换整个模板的情况下无法更新模板属性。
 {% endhint %}
 
-### Missing style pseudoclass (trigger) selector
+### 缺少样式伪类（触发器）选择器
 
-Let's imagine a situation in which you might expect a second style to override previous one, but it doesn't:
+让我们设想一种情况，在这种情况下，您可能希望第二种样式覆盖前一种样式，但它不会：
 
 ```markup
 <Style Selector="Border:pointerover">
@@ -79,16 +79,15 @@ Let's imagine a situation in which you might expect a second style to override p
 <Border Width="100" Height="100" Margin="100" />
 ```
 
-With this code example the `Border` has a Red background normally and Blue when the pointer is over it. This is because as with CSS more specific selectors have precedence. It is an issue, when you want to override default styles of any state (pointerover, pressed or others) with a single style. To achieve it you will need to have new styles for these states as well.&#x20;
+在这个代码示例中，`Border`正常情况下是红色背景，当指针悬停在上方时为蓝色。这是因为与CSS一样，更具体的选择器优先级更高。当您想要用单一样式覆盖任何状态（pointerover、pressed或其他）的默认样式时，这是一个问题。为了实现这一点，您还需要为这些状态创建新的样式；
 
 {% hint style="info" %}
-Visit the Avalonia source code to find the [original templates](https://github.com/AvaloniaUI/Avalonia/tree/master/src/Avalonia.Themes.Fluent/Controls) when this happens and copy and paste the styles with pseudoclasses into your code.
-
+访问Avalonia源代码查找[原始模板](https://github.com/AvaloniaUI/Avalonia/tree/master/src/Avalonia.Themes.Fluent/Controls)。当这种情况发生时，将带有伪类的样式复制并粘贴到代码中。
 {% endhint %}
 
-### Selector with a pseudoclass doesn't override the default
+### 带有伪类的选择器不会覆盖默认值
 
-The following code example of styles that can be expected to work on top of default styles:
+以下代码示例展示了作用在默认样式之上的样式：
 
 ```markup
 <Style Selector="Button">
@@ -99,9 +98,9 @@ The following code example of styles that can be expected to work on top of defa
 </Style>
 ```
 
-You might expect the `Button` to be red by default and blue when pointer is over it. In fact, only setter of first style will be applied, and second one will be ignored.&#x20;
+您可能希望默认情况下`Button`为红色，当指针悬停在上方时为蓝色。实际上，只有第一个样式的设置器会被应用，而第二个设置器会被忽略。
 
-The reason is hidden in the Button's template. You can find the default templates in the Avalonia source code (old [Default](https://github.com/AvaloniaUI/Avalonia/blob/master/src/Avalonia.Themes.Default/Button.xaml) theme and new [Fluent](https://github.com/AvaloniaUI/Avalonia/blob/master/src/Avalonia.Themes.Fluent/Controls/Button.xaml) theme), but for convenience here we have simplified one from the Fluent theme:
+原因隐藏在Button的模板中。你可以在Avalonia源代码中找到默认模板（旧的[Default](https://github.com/AvaloniaUI/Avalonia/blob/master/src/Avalonia.Themes.Default/Button.xaml)主题和新的[Fluent](https://github.com/AvaloniaUI/Avalonia/blob/master/src/Avalonia.Themes.Fluent/Controls/Button.xaml)主题），但为了方便，我们在这里简化了Fluent主题中的一个：
 
 ```markup
 <Style Selector="Button">
@@ -119,28 +118,28 @@ The reason is hidden in the Button's template. You can find the default template
 </Style>
 ```
 
-The actual background is rendered by a `ContentPresenter`, which in the default is bound to the Buttons `Background` property. However in the pointer-over state the selector is directly applying the background to the `ContentPresenter (Button:pointerover /template/ ContentPresenter#PART_ContentPresenter`) That's why when our setter was ignored in the previous code example. The corrected code should target content presenter directly as well:
+实际的背景是由`ContentPresenter`渲染的，在默认情况下，它与Button的 `Background`属性绑定。然而，在pointer-over状态下，选择器直接将背景应用于`ContentPresenter (Button:pointerover /template/ ContentPresenter#PART_ContentPresenter)`。这就是为什么在前面的代码示例中，第二个设置器被忽略了。更正后的代码也应该直接针对内容展示。
 
 ```markup
-<!-- Here #PART_ContentPresenter name selector is not necessary, but was added to have more specific style -->
+<!-- 这里的#PART_ContentPresenter名称选择器是不必要的，但被添加成更具体的样式。 -->
 <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
     <Setter Property="Background" Value="Blue" />
 </Style>
 ```
 
 {% hint style="info" %}
-You can see this behavior for all controls in the default themes (both old Default and the new Fluent), not just Button. And not just for Background, but also other state-dependent properties.
+不仅仅是Button，你可以在默认主题中的所有控件（包括旧的Default和新的Fluent）看到这种行为。而且不仅仅是Background，还有其他与状态相关的属性也有这种行为。
 {% endhint %}
 
 {% hint style="info" %}
-Why default styles change the ContentPresenter `Background` property directly instead of changing the `Button.Background` property?&#x20;
+为什么默认样式直接改变ContentPresenter的`Background`属性，而不是改变`Button.Background`属性？
 
-This is because if the user were to set a local value on the button, it would override all styles, and make button always the same color. For more details see this [reverted PR](https://github.com/AvaloniaUI/Avalonia/pull/2662#issuecomment-515764732).
+这是因为如果用户在按钮上设置一个本地值，就会覆盖所有的样式，并使按钮永远是同一个颜色。更多细节请看这个[reverted PR](https://github.com/AvaloniaUI/Avalonia/pull/2662#issuecomment-515764732)。
 {% endhint %}
 
-### Previous value of specific properties is not restored when style is not applied anymore
+### 样式不再应用时，不会恢复特定属性的历史值
 
-In Avalonia we have multiple types of properties, and one of them, Direct Property, doesn't support styling at all. These properties work in simplified way to achieve lower overhead and higher performance, and do not store multiple values depending on priority. Instead only latest value is saved and cannot be restored. You can find more details about properties [here](../authoring-controls/defining-properties.md#direct-avaloniaproperties).
+在Avalonia中有多种类型的属性，其中之一，直接属性(Direct Property)，完全不支持样式。这些属性以简化的方式工作，以实现更低的开销和更高的性能，并且不根据优先级存储多个值。它只保存最新的值，并且不能恢复。你可以在[这里](../authoring-controls/defining-properties.md#direct-avaloniaproperties)找到更多关于属性的详细信息。
 
-Typical example is [CommandProperty](http://reference.avaloniaui.net/api/Avalonia.Controls/Button/B9689B29). It is defined as a DirectProperty, and it will never work properly.
-In the future attempt to style direct property will be resulted in compile time error, see [#6837](https://github.com/AvaloniaUI/Avalonia/issues/6837).
+典型的例子是[CommandProperty](http://reference.avaloniaui.net/api/Avalonia.Controls/Button/B9689B29)。它被定义为一个直接属性(DirectProperty)，它将永远无法正常工作。
+在未来，尝试设置直接属性的样式将导致编译错误，详情请看[#6837](https://github.com/AvaloniaUI/Avalonia/issues/6837)。

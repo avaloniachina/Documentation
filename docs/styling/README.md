@@ -1,8 +1,8 @@
 # 🎨 样式
 
-[Styles in Avalonia](styles.md) are used to share property settings between controls. The Avalonia styling system can be thought of as a mix of CSS styling and WPF/UWP styling. At its most basic, a style consists of a _selector_ and a collection of _setters_.
+[Avalonia中的样式](styles.md)用于在控件之间共享属性设置。Avalonia的样式系统可以被看作是CSS样式和WPF/UWP样式的混合。最基本的样式由选择器(selector)和设置器(setters)的集合组成。
 
-The following style selects any `TextBlock` in the `Window` with a `h1` _style class_ and sets its font size to 24 point and font weight to bold:
+以下样式选择带有`h1`样式类(style class)的任何`TextBlock`，并将其字体大小设置为24点，字体加粗。
 
 ```markup
 <Window xmlns="https://github.com/avaloniaui"

@@ -4,7 +4,7 @@ Avalonia中的样式用于在控件之间共享属性设置。Avalonia的样式�
 
 样式适用于它定义的控件以及所有的后代控件。
 
-以下样式选择带有`h1`样式类(style class)的任何`TextBlock`，并将其字体大小设置为24磅，字体加粗。
+以下样式选择带有`h1`样式类(style class)的任何`TextBlock`，并将其字体大小设置为24点，字体加粗。
 
 ```markup
 <Style Selector="TextBlock.h1">

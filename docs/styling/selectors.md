@@ -24,7 +24,7 @@ new Style(x => x.OfType(typeof(Button)));
 
 按类型选择控件。上面的第一个示例选择`Avalonia.Controls.Button`类。若要在类型中引用XAML命名空间，请使用`|`字符分隔命名空间和类型。
 
-此选择器与派生类型不匹配。为此，请使用[`Is`](selectors.md#is)选择器。
+此选择器不会匹配派生类。想要实现派生类匹配请使用[`Is`](selectors.md#is)选择器。
 
 {% hint style="info" %}
 注意：对象的类型实际上是通过查看其`IStyleable.StyleKey`属性来确定的。默认情况下，这只是返回当前实例的类型，但如果例如您确实希望从`Button`继承的控件样式为`Button`，则可以在类上实现`IStyleable.StyleKey`属性以返回`typeof(Button)`。
@@ -52,7 +52,7 @@ new Style(x => x.OfType<Button>().Name("myButton"));
 {% endtab %}
 {% endtabs %}
 
-通过带有`#`字符的[`Name`](http://reference.avaloniaui.net/api/Avalonia/StyledElement/2362746E)属性选择一个控件。
+使用`#`字符按控件的[`Name`](http://reference.avaloniaui.net/api/Avalonia/StyledElement/2362746E)属性选择一个控件。
 
 ## Class <a id="class"></a>
 
@@ -76,7 +76,7 @@ new Style(x => x.OfType<Button>().Class("large").Class(":focus"));
 {% endtab %}
 {% endtabs %}
 
-选择一个具有指定样式类的控件。多个类用`.`字符分开，如果是伪类则用`:`字符。如果指定了多个样式类，那么该控件必须有所有必要的样式能够匹配。
+选择一个具有指定样式类的控件。多个类用`.`字符分开，如果是伪类则用`:`字符。如果指定了多个样式类，那么控件必须有所有必要的样式类才能够匹配。
 
 ## Is <a id="is"></a>
 

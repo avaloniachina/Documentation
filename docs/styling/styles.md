@@ -149,7 +149,7 @@ PseudoClasses.Set(":className", bool);
 <Setter Property="Padding" Value="4 2 0 4"/>
 ```
 
-您还可以使用长表单(long-form)语法来声明更复杂的对象值：
+您还可以使用复杂元素语法来声明更复杂的对象值：
 
 ```markup
 <Setter Property="MyProperty">

@@ -1,52 +1,54 @@
 # 面板概述
 
-`Panel` elements are components that control the rendering of elements - their size and dimensions, their position, and the arrangement of their child content. Avalonia provides a number of predefined `Panel` elements as well as the ability to construct custom `Panel` elements.
+`Panel`元素是控制元素呈现（它们的大小和尺寸、位置和子内容的排列）的组件。Avalonia提供许多预定义的`Panel`元素以及构造自定义`Panel`元素的功能。
 
-## The Panel Class <a id="the-panel-class"></a>
+## Panel类 <a id="the-panel-class"></a>
 
-`Panel` is the base class for all elements that provide layout support in Avalonia. Derived `Panel` elements are used to position and arrange elements in XAML and code.
+`Panel`是Avalonia中提供布局支持的所有元素的基类。派生的`Panel`元素用于在XAML和代码中定位和排列元素。
 
-Avalonia includes a comprehensive suite of derived panel implementations that enable many complex layouts. These derived classes expose properties and methods that enable most standard UI scenarios. Developers who are unable to find a child arrangement behavior that meets their needs can create new layouts by overriding the `ArrangeOverride` and `MeasureOverride` methods. For more information on custom layout behaviors, see [Create a Custom Panel](create-a-custom-panel.md).
+Avalonia有一套全面的派生自`Panel`的实现，支持许多复杂的布局。这些派生类暴露了支持大多数标准UI场景的属性和方法。在没有找到满足开发人员需要的子排列的行为之前，开发人员可以通过重写`ArrangeOverride`和`MeasureOverride`方法来创建新布局。想要了解自定义布局行为的更多信息，请浏览[创建自定义Panel](create-a-custom-panel.md)。
 
-### Panel Common Members <a id="panel-common-members"></a>
+### Panel通用成员 <a id="panel-common-members"></a>
 
-All `Panel` elements support the base sizing and positioning properties defined by `Control`, including `Height`, `Width`, `HorizontalAlignment`, `VerticalAlignment` and `Margin`. For additional information on positioning properties defined by `Control`, see [Alignment, Margins, and Padding Overview](alignment-margins-and-padding.md).
+所有`Panel`元素都支持由`Control`定义的关于尺寸调整和定位的基本属性，包括`Height`、`Width`、`HorizontalAlignment`、`VerticalAlignment`和`Margin`。想要了解关于`Control`中定义的定位属性的其他信息，请浏览[Alignment、Margins和Padding概述](alignment-margins-and-padding.md)。
 
-`Panel` exposes additional properties that are of critical importance in understanding and using layout. The `Background` property is used to fill the area between the boundaries of a derived panel element with a `Brush`. `Children` represents the child collection of elements that the `Panel` is comprised of.
+`Panel`暴露了对理解和使用布局至关重要的属性。`Background`属性作用在用`Brush`填充派生`Panel`元素边界之间的区域，`Children`表示`Panel`所包含的元素的子集合。
 
-**Attached Properties**
+**附加属性(Attached Properties)**
 
-Derived panel elements make extensive use of attached properties. An attached property is a specialized form of dependency property that does not have the conventional common language runtime \(CLR\) property "wrapper". Attached properties have a specialized syntax in XAML, which can be seen in several of the examples that follow.
+派生自`Panel`的元素广泛使用了附加属性。附加属性是一种特殊形式的依赖属性，它没有常规的公共语言运行库(CLR)属性`wrapper`。附加的属性在XAML中有一个特殊的语法，可以在下面的几个示例中看到。
 
-One purpose of an attached property is to allow child elements to store unique values of a property that is actually defined by a parent element. An application of this functionality is having child elements inform the parent how they wish to be presented in the UI, which is extremely useful for application layout.
+附加属性的一个目的是允许子元素存储父元素实际定义的属性的唯一值。具有此功能的应用程序能让子元素通知父元素如何在UI中显示，这对于应用程序布局非常有用。
 
 ### User Interface Panels <a id="user-interface-panels"></a>
 
-There are several panel classes available in Avalonia that are optimized to support UI scenarios: `Panel`, `Canvas`, `DockPanel`, `Grid`, `StackPanel`, `WrapPanel` and `RelativePanel`. These panel elements are easy to use, versatile, and extensible enough for most applications.
+Avalonia中有几个支持UI场景的、经过优化的`Panel`类：`Panel`、`Canvas`、`DockPanel`, `Grid`, `StackPanel`, `WrapPanel` 和 `RelativePanel`。这些`Panel`元素易于使用、功能强大且可扩展性高，足以胜任大多数应用。
 
-**Canvas** <a id="canvas-class"></a>
+**画布(Canvas)** <a id="canvas-class"></a>
 
-The `Canvas` element enables positioning of content according to absolute _x-_ and _y-_ coordinates. Elements can be drawn in a unique location; or, if elements occupy the same coordinates, the order in which they appear in markup determines the order in which the elements are drawn.
+`Canvas`元素根据 _x-_ 和 _y-_ 的绝对坐标定位内容。元素可以在唯一的位置绘制，如果元素占据相同的坐标，则它们在标记中出现的顺序决定了元素的绘制顺序。
 
-`Canvas` provides the most flexible layout support of any `Panel`. Height and Width properties are used to define the area of the canvas, and elements inside are assigned absolute coordinates relative to the area of the parent `Canvas`. Four attached properties, `Canvas.Left`, `Canvas.Top`, `Canvas.Right` and `Canvas.Bottom`, allow fine control of object placement within a `Canvas`, allowing the developer to position and arrange elements precisely on the screen.
+`Canvas`是所有`Panel`中最灵活的布局。高度(`Height`)和宽度(`Width`)属性用于定义`Canvas`的面积，里面的元素被分配了相对于父`Canvas`面积的绝对坐标。四个附加属性`Canvas.Left`、`Canvas.Top`、`Canvas.Right`和`Canvas.Bottom`，可以控制对象在`Canvas`中的精确位置，允许开发者在屏幕上精确定位和排列元素。
 
-**ClipToBounds Within a Canvas**
+**Canvas中的ClipToBounds**
 
-`Canvas` can position child elements at any position on the screen, even at coordinates that are outside of its own defined `Height` and `Width`. Furthermore, `Canvas` is not affected by the size of its children. As a result, it is possible for a child element to overdraw other elements outside the bounding rectangle of the parent `Canvas`. The default behavior of a `Canvas` is to allow children to be drawn outside the bounds of the parent `Canvas`. If this behavior is undesirable, the `ClipToBounds` property can be set to `true`. This causes `Canvas` to clip to its own size. `Canvas` is the only layout element that allows children to be drawn outside its bounds.
+`Canvas`可以将子元素放置在屏幕上的任何位置，甚至在其自身定义的`Height`和`Width`之外的坐标处。此外，`Canvas`不受其子对象大小的影响。因此，子元素可能会在父`Canvas`的边界矩形之外绘制其他元素。`Canvas`默认允许在父`Canvas`边界之外绘制子对象。如果不希望出现这种情况，可以将`ClipToBounds`属性设置为`true`，这将导致`Canvas`剪裁到其自身大小。`Canvas`是唯一允许在其边界之外绘制子对象的布局元素。
 
-**Defining and Using a Canvas**
+**声明和使用Canvas**
+
+只需使用XAML或代码即可实例化`Canvas`。下面的示例演示如何使用`Canvas`来绝对定位内容。此代码生成三个100像素的正方形。第一个正方形是红色的，其左上角的\(_x, y_)位置指定为\(0, 0\)。第二个正方形是绿色的，其左上角的位置是\(100, 100\)，正好在第一个正方形的右下方。第三个正方形是蓝色的，其左上角的位置是\(50, 50\)，因此包含第一个正方形的右下象限和第二个正方形的左上象限。因为第三个正方形是最后布置的，所以它看起来位于其他两个正方形的顶部，也就是说，重叠部分呈现第三个方框的颜色。
 
 A `Canvas` can be instantiated simply by using XAML or code. The following example demonstrates how to use `Canvas` to absolutely position content. This code produces three 100-pixel squares. The first square is red, and its top-left \(_x, y_\) position is specified as \(0, 0\). The second square is green, and its top-left position is \(100, 100\), just below and to the right of the first square. The third square is blue, and its top-left position is \(50, 50\), thus encompassing the lower-right quadrant of the first square and the upper-left quadrant of the second. Because the third square is laid out last, it appears to be on top of the other two squares—that is, the overlapping portions assume the color of the third box.
 
 C\#
 
 ```csharp
-// Create the Canvas
+// 创建Canvas
 myParentCanvas = new Canvas();
 myParentCanvas.Width = 400;
 myParentCanvas.Height = 400;
 
-// Define child Canvas elements
+// 声明子画布元素
 myCanvas1 = new Canvas();
 myCanvas1.Background = Brushes.Red;
 myCanvas1.Height = 100;
@@ -68,7 +70,7 @@ myCanvas3.Width = 100;
 Canvas.SetTop(myCanvas3, 50);
 Canvas.SetLeft(myCanvas3, 50);
 
-// Add child elements to the Canvas' Children collection
+// 将子元素添加到Canvas的Children集合
 myParentCanvas.Children.Add(myCanvas1);
 myParentCanvas.Children.Add(myCanvas2);
 myParentCanvas.Children.Add(myCanvas3);
@@ -86,30 +88,30 @@ XAML
 
 **DockPanel** <a id="dockpanel-class"></a>
 
-The `DockPanel` element uses the `DockPanel.Dock` attached property as set in child content elements to position content along the edges of a container. When `DockPanel.Dock` is set to `Top` or `Bottom`, it positions child elements above or below each other. When `DockPanel.Dock` is set to `Left` or `Right`, it positions child elements to the left or right of each other. The `LastChildFill` property determines the position of the final element added as a child of a `DockPanel`.
+`DockPanel`元素使用在子内容元素中设置的`DockPanel.Dock`附加属性沿着容器边缘来定位内容。当`DockPanel.Dock`设置为`Top`或`Bottom`时，它会将子元素置于彼此之上或之下；当`DockPanel.Dock`设置为`Left`或`Right`时，它会将子元素放置在彼此的左侧或右侧。`LastChildFill`属性决定作为`DockPanel`子元素添加的最终位置。
 
-You can use `DockPanel` to position a group of related controls, such as a set of buttons. Alternately, you can use it to create a "paned" UI.
+您可以使用`DockPanel`定位一组相关控件，例如一组按钮。或者，您可以使用它创建`paned`UI。
 
-**Sizing to Content**
+**根据内容调整尺寸**
 
-If its `Height` and `Width` properties are not specified, `DockPanel` sizes to its content. The size can increase or decrease to accommodate the size of its child elements. However, when these properties are specified and there is no longer room for the next specified child element, `DockPanel` does not display that child element or subsequent child elements and does not measure subsequent child elements.
+如果未指定`Height`和`Width`属性，`DockPanel`将根据其内容调整尺寸，尺寸可以增加或减少以适应其子元素的大小。但是，当指定了这些属性并且没有空间容纳下一个指定的子元素时，`DockPanel`不会显示该子元素或后续子元素，也不会测量后续子元素。
 
 **LastChildFill**
 
-By default, the last child of a `DockPanel` element will "fill" the remaining, unallocated space. If this behavior is not desired, set the `LastChildFill` property to `false`.
+默认情况下，`DockPanel`元素的最后一个子元素将“填充”剩余的未分配空间。如果不希望这么做，请将`LastChildFill`属性设置为`false`。
 
-**Defining and Using a DockPanel**
+**声明和使用DockPanel**
 
-The following example demonstrates how to partition space using a `DockPanel`. Five `Border` elements are added as children of a parent `DockPanel`. Each uses a different positioning property of a `DockPanel` to partition space. The final element "fills" the remaining, unallocated space.
+下面的示例演示如何使用`DockPanel`对空间进行分区。在父元素`DockPanel`里添加了五个`Border`子元素，每个`Border`使用`DockPanel`的不同定位属性来划分空间。最后一个元素“填充”了剩余的未分配空间。
 
 C\#
 
 ```csharp
-// Create the DockPanel
+// 创建DockPanel
 DockPanel myDockPanel = new DockPanel();
 myDockPanel.LastChildFill = true;
 
-// Define the child content
+// 声明子内容
 Border myBorder1 = new Border();
 myBorder1.Height = 25;
 myBorder1.Background = Brushes.SkyBlue;
@@ -163,7 +165,7 @@ myTextBlock5.Foreground = Brushes.Black;
 myTextBlock5.Text = "This content will Fill the remaining space";
 myBorder5.Child = myTextBlock5;
 
-// Add child elements to the DockPanel Children collection
+// 将子元素添加到DockPanel Children集合
 myDockPanel.Children.Add(myBorder1);
 myDockPanel.Children.Add(myBorder2);
 myDockPanel.Children.Add(myBorder3);
@@ -188,27 +190,29 @@ XAML
     <TextBlock Foreground="Black">Dock = "Left"</TextBlock>
   </Border>
   <Border Background="White" BorderBrush="Black" BorderThickness="1">
-    <TextBlock Foreground="Black">This content will "Fill" the remaining space</TextBlock>
+    <TextBlock Foreground="Black">这部分内容“填充”剩余的空间</TextBlock>
   </Border>
 </DockPanel>
 ```
 
 **Grid** <a id="grid-class"></a>
 
-The `Grid` element merges the functionality of an absolute positioning and tabular data control. A `Grid` enables you to easily position and style elements. `Grid` allows you to define flexible row and column groupings, and even provides a mechanism to share sizing information between multiple `Grid` elements.
+`Grid`元素合并了绝对定位和表格式数据控件的功能，使您能够轻松定位元素并设置元素样式。`Grid`允许您定义灵活的行和列分组，甚至提供了一种在多个`Grid`元素之间共享尺寸信息的机制。
 
-**Sizing Behavior of Columns and Rows**
+**行列尺寸调整机制**
 
-Columns and rows defined within a `Grid` can take advantage of `Star` sizing in order to distribute remaining space proportionally. When `Star` is selected as the Height or Width of a row or column, that column or row receives a weighted proportion of remaining available space. This is in contrast to `Auto`, which will distribute space evenly based on the size of the content within a column or row. This value is expressed as `*` or `2*` when using XAML. In the first case, the row or column would receive one times the available space, in the second case, two times, and so on. By combining this technique to proportionally distribute space with a `HorizontalAlignment` and `VerticalAlignment` value of `Stretch` it is possible to partition layout space by percentage of screen space. `Grid` is the only layout panel that can distribute space in this manner.
+在`Grid`中定义的行和列可以利用`Star`调整尺寸，以便按比例分配剩余空间。当选择`Star`作为行或列的高度或宽度时，该行或列将获得剩余可用空间的加权比例。`Auto`与此相反，`Auto`将根据行或列中内容的大小均匀分配空间。
 
-**Defining and Using a Grid**
+当使用XAML时，值表示为`*`或`2*`。在第一种情况下，行或列将接收可用空间的一倍，在第二种情况下接收两倍，依此类推。通过将此技术与`HorizontalAlignment`和`VerticalAlignment`值`Stretch`相结合，可以按屏幕空间的百分比划分布局空间。`Grid`是唯一可以使用这种方式分配空间的布局Panel。
 
-The following example demonstrates how to build a UI similar to that found on the Run dialog available on the Windows Start menu.
+**声明和使用Grid**
+
+以下示例演示了如何构建与Windows“开始”菜单上的“运行”对话框类似的UI。
 
 C\#
 
 ```csharp
-// Create the Grid.
+// 创建Grid
 grid1 = new Grid ();
 grid1.Background = Brushes.Gainsboro;
 grid1.HorizontalAlignment = HorizontalAlignment.Left;
@@ -217,7 +221,7 @@ grid1.ShowGridLines = true;
 grid1.Width = 425;
 grid1.Height = 165;
 
-// Define the Columns.
+// 声明Columns
 colDef1 = new ColumnDefinition();
 colDef1.Width = new GridLength(1, GridUnitType.Auto);
 colDef2 = new ColumnDefinition();
@@ -234,7 +238,7 @@ grid1.ColumnDefinitions.Add(colDef3);
 grid1.ColumnDefinitions.Add(colDef4);
 grid1.ColumnDefinitions.Add(colDef5);
 
-// Define the Rows.
+// 声明Rows
 rowDef1 = new RowDefinition();
 rowDef1.Height = new GridLength(1, GridUnitType.Auto);
 rowDef2 = new RowDefinition();
@@ -248,13 +252,13 @@ grid1.RowDefinitions.Add(rowDef2);
 grid1.RowDefinitions.Add(rowDef3);
 grid1.RowDefinitions.Add(rowDef4);
 
-// Add the Image.
+// 添加Image
 img1 = new Image();
 img1.Source = runicon;
 Grid.SetRow(img1, 0);
 Grid.SetColumn(img1, 0);
 
-// Add the main application dialog.
+// 添加主应用程序对话框
 txt1 = new TextBlock();
 txt1.Text = "Type the name of a program, folder, document, or Internet resource, and Windows will open it for you.";
 txt1.TextWrapping = TextWrapping.Wrap;
@@ -262,19 +266,19 @@ Grid.SetColumnSpan(txt1, 4);
 Grid.SetRow(txt1, 0);
 Grid.SetColumn(txt1, 1);
 
-// Add the second text cell to the Grid.
+// 将第二个文本单元格添加到Grid中
 txt2 = new TextBlock();
 txt2.Text = "Open:";
 Grid.SetRow(txt2, 1);
 Grid.SetColumn(txt2, 0);
 
-// Add the TextBox control.
+// 添加TextBox控件
 tb1 = new TextBox();
 Grid.SetRow(tb1, 1);
 Grid.SetColumn(tb1, 1);
 Grid.SetColumnSpan(tb1, 5);
 
-// Add the buttons.
+// 添加按钮
 button1 = new Button();
 button2 = new Button();
 button3 = new Button();
@@ -302,25 +306,25 @@ grid1.Children.Add(button3);
 
 **StackPanel** <a id="stackpanel-class"></a>
 
-A `StackPanel` enables you to "stack" elements in an assigned direction. The default stack direction is vertical. The `Orientation` property can be used to control content flow.
+`StackPanel`使您能够按指定方向“堆叠”元素，默认排列方向为垂直，`Orientation`属性控制内容排列方向。
 
-**StackPanel vs. DockPanel**
+**StackPanel对比DockPanel**
 
-Although `DockPanel` can also "stack" child elements, `DockPanel` and `StackPanel` do not produce analogous results in some usage scenarios. For example, the order of child elements can affect their size in a `DockPanel` but not in a `StackPanel`. This is because `StackPanel` measures in the direction of stacking at `PositiveInfinity`, whereas `DockPanel` measures only the available size.
+尽管`DockPanel`也可以“堆叠”子元素，但在某些使用场景中，`DockPanel `和`StackPanel`不会产生类似的效果。例如，子元素的顺序会影响其在`DockPanel`中的尺寸，而在`StackPanel`中不会受到影响。这是因为`StackPanel`在`PositiveInfinity`处定位堆叠方向，而`DockPanel`仅测量可用尺寸。
 
-**Defining and Using a StackPanel**
+**声明和使用StackPanel**
 
-The following example demonstrates how to use a `StackPanel` to create a set of vertically-positioned buttons. For horizontal positioning, set the `Orientation` property to `Horizontal`.
+下面的示例演示如何使用`StackPanel`创建一组垂直放置的按钮。如果想要水平放置，请将`Orientation`属性设置为`Horizontal`。
 
 C\#
 
 ```csharp
-// Define the StackPanel
+// 声明StackPanel
 myStackPanel = new StackPanel();
 myStackPanel.HorizontalAlignment = HorizontalAlignment.Left;
 myStackPanel.VerticalAlignment = VerticalAlignment.Top;
 
-// Define child content
+// 声明子内容
 Button myButton1 = new Button();
 myButton1.Content = "Button 1";
 Button myButton2 = new Button();
@@ -328,7 +332,7 @@ myButton2.Content = "Button 2";
 Button myButton3 = new Button();
 myButton3.Content = "Button 3";
 
-// Add child elements to the parent StackPanel
+// 将子元素添加到父StackPanel
 myStackPanel.Children.Add(myButton1);
 myStackPanel.Children.Add(myButton2);
 myStackPanel.Children.Add(myButton3);
@@ -336,14 +340,14 @@ myStackPanel.Children.Add(myButton3);
 
 **WrapPanel** <a id="wrappanel-class"></a>
 
-`WrapPanel` is used to position child elements in sequential position from left to right, breaking content to the next line when it reaches the edge of its parent container. Content can be oriented horizontally or vertically. `WrapPanel` is useful for simple flowing UI scenarios. It can also be used to apply uniform sizing to all of its child elements.
+`WrapPanel`用于将子元素从左到右按顺序放置，当内容到达其父容器的边缘时，将剩余内容拆分到下一行，内容可以以水平或垂直方向放置。`WrapPanel`适用于简单的流动UI场景，它还能够统一其所有子元素的尺寸大小。
 
-The following example demonstrates how to create a `WrapPanel` to display `Button` controls that wrap when they reach the edge of their container.
+下面的示例演示如何创建`WrapPanel`用以显示`Button`控件，这些控件在到达容器边缘时换行。
 
 C\#
 
 ```csharp
-// Instantiate a new WrapPanel and set properties
+// 实例化WrapPanel并设置属性
 myWrapPanel = new WrapPanel();
 myWrapPanel.Background = System.Windows.Media.Brushes.Azure;
 myWrapPanel.Orientation = Orientation.Horizontal;
@@ -351,8 +355,7 @@ myWrapPanel.Width = 200;
 myWrapPanel.HorizontalAlignment = HorizontalAlignment.Left;
 myWrapPanel.VerticalAlignment = VerticalAlignment.Top;
 
-// Define 3 button elements. The last three buttons are sized at width 
-// of 75, so the forth button wraps to the next line.
+// 声明3个按钮元素。最后三个按钮的宽度为75，因此第四个按钮将换行到下一行。
 btn1 = new Button();
 btn1.Content = "Button 1";
 btn1.Width = 200;
@@ -366,7 +369,7 @@ btn4 = new Button();
 btn4.Content = "Button 4";
 btn4.Width = 75;
 
-// Add the buttons to the parent WrapPanel using the Children.Add method.
+// 使用Children.Add方法将按钮添加到父WrapPanel。
 myWrapPanel.Children.Add(btn1);
 myWrapPanel.Children.Add(btn2);
 myWrapPanel.Children.Add(btn3);
@@ -386,9 +389,9 @@ XAML
 </Border>
 ```
 
-### Nested Panel Elements <a id="nested-panel-elements"></a>
+### 嵌套Panel元素 <a id="nested-panel-elements"></a>
 
-`Panel` elements can be nested within each other in order to produce complex layouts. This can prove very useful in situations where one `Panel` is ideal for a portion of a UI, but may not meet the needs of a different portion of the UI.
+`Panel`元素可以相互嵌套，以生成复杂的布局。在一个`Panel`非常适合UI的一部分，但无法满足UI的不同部分的需求的情况下非常有用。
 
-There is no practical limit to the amount of nesting that your application can support, however, it is generally best to limit your application to only use those panels that are actually necessary for your desired layout. In many cases, a `Grid` element can be used instead of nested panels due to its flexibility as a layout container. This can increase performance in your application by keeping unnecessary elements out of the tree.
+应用程序可以支持的嵌套数量没有实际限制，但是，通常情况下最好将应用程序限制使用为实际需要的`Panel`。在多数情况下，由于布局容器`Grid`元素的灵活性，可以使用它来代替嵌套Panel。这可以通过将不必要的元素排除在树之外来提高应用程序的性能。
 

@@ -117,7 +117,7 @@
   * [过渡](docs/animations/transitions.md)
   * [页面过渡](docs/animations/pagetransitions.md)
 * [📐 布局](docs/layout/README.md)
-  * [Panels概述](docs/layout/panels-overview.md)
+  * [面板概述](docs/layout/panels-overview.md)
   * [Alignment、Margin和Padding](docs/layout/alignment-margins-and-padding.md)
   * [创建自定义Panel](docs/layout/create-a-custom-panel.md)
 * [📦 发布/分发](docs/distribution-publishing/README.md)

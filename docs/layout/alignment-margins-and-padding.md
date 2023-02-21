@@ -1,6 +1,6 @@
 # Alignment、Margin 和 Padding
 
-Avalonia 控件暴露了用于精确定位子元素的几个属性。本章节讨论了四个最重要的属性：`HorizontalAlignment`、`Margin`、`Padding`和`VerticalAlignment`。理解这些属性的效果很重要，因为它们是控制元素在Avalonia应用程序中的位置的基础。
+Avalonia控件暴露了一些用于精确定位子元素的属性。本章节讨论四个最重要的属性：`HorizontalAlignment`、`Margin`、`Padding`和`VerticalAlignment`。理解这些属性的作用非常重要，因为这些属性是控制元素在Avalonia应用程序中的位置的基础。
 
 ### 元素定位<a id="introduction-to-element-positioning"></a>
 
@@ -40,13 +40,13 @@ Avalonia定位元素有许多使用方式。然而，实现理想的布局不仅
 
 ```
 
-下图提供了上述示例中使用的各种定位属性的全貌图。本章节的后续部分会更详细地描述如何使用每个定位属性。
+通过下图可以仔细查看上例中使用的各个定位属性。本章节的后续部分会更详细地介绍如何使用各个定位属性。
 
 ![Positioning Properties](../../.gitbook/assets/layout-margins-padding-alignment-graphic2.png)
 
 ### 理解Alignment属性 <a id="understanding-alignment-properties"></a>
 
-`HorizontalAlignment`和`VerticalAlignment`属性描述了一个子元素应该如何在父元素分配的布局空间内定位。通过一起使用这些属性，你可以精确地定位子元素。例如，`DockPanel`的子元素可以指定四种不同的水平对齐方式。`Left`、`Right`、`Center`或者`Stretch`（拉伸）以填补可用空间。类似的值也可用于垂直定位。
+`HorizontalAlignment`和`VerticalAlignment`属性描述了一个子元素应该如何在父元素分配的布局空间内定位。结合使用这些属性可精确定位子元素。例如，`DockPanel`的子元素可以指定四种不同的水平对齐方式。`Left`、`Right`、`Center`或者`Stretch`（拉伸）以填补可用空间。类似的值也可用于垂直定位。
 
 元素上明确设置的`Height`和`Width`属性的优先级高于`Stretch`属性。如果明确设置了`Height`和`Width`，再将`HorizontalAlignment`设置为`Stretch`，这样会忽略`Stretch`属性。
 
@@ -54,12 +54,12 @@ Avalonia定位元素有许多使用方式。然而，实现理想的布局不仅
 
 `HorizontalAlignment`属性声明了要应用于子元素的水平对齐特性。下表列出了`HorizontalAlignment`属性的可选值。
 
-| 成员             | 描述                                             |
-|:---------------|:-----------------------------------------------|
-| `Left`         | 子元素与父元素分配的布局空间的左侧对齐。                           |
-| `Center`       | 子元素与父元素分配的布局空间的中心对齐。                           |
-| `Right`        | 子元素与父元素分配的布局空间的右侧对齐。                           |
-| `Stretch` （默认） | 子元素被拉伸以填充父元素分配的布局空间。明确的`Width`和`Height`值优先级更高。 |
+| 成员             | 描述                                            |
+|:---------------|:----------------------------------------------|
+| `Left`         | 子元素与父元素分配的布局空间的左端对齐。                          |
+| `Center`       | 子元素与父元素分配的布局空间的中心对齐。                          |
+| `Right`        | 子元素与父元素分配的布局空间的右端对齐。                          |
+| `Stretch` （默认） | 拉伸子元素以填充父元素分配的布局空间。明确的`Width`和`Height`值优先级更高。 |
 
 下面的示例展示了如何将`HorizontalAlignment`属性应用于`Button`元素。为了更好地说明各种渲染行为，每种特性值的效果都被展示了出来。
 
@@ -78,12 +78,12 @@ Avalonia定位元素有许多使用方式。然而，实现理想的布局不仅
 
 `VerticalAlignment`属性声明了要应用于子元素的垂直对齐特性。下表列出了`VerticalAlignment`属性的可选值。
 
-| 成员            | 描述                                             |
-|:--------------|:-----------------------------------------------|
-| `Top`         | 子元素与父元素分配的布局空间的顶部对齐。                           |
-| `Center`      | 子元素与父元素分配的布局空间的中心对齐。                           |
-| `Bottom`      | 子元素与父元素分配的布局空间的底部对齐。                           |
-| `Stretch`（默认） | 子元素被拉伸以填充父元素分配的布局空间。明确的`Width`和`Height`值优先级更高。 |
+| 成员            | 描述                                            |
+|:--------------|:----------------------------------------------|
+| `Top`         | 子元素与父元素分配的布局空间的顶端对齐。                          |
+| `Center`      | 子元素与父元素分配的布局空间的中心对齐。                          |
+| `Bottom`      | 子元素与父元素分配的布局空间的底端对齐。                          |
+| `Stretch`（默认） | 拉伸子元素以填充父元素分配的布局空间。明确的`Width`和`Height`值优先级更高。 |
 
 下面的示例展示了如何将`VerticalAlignment`属性应用于`Button`元素。为了更好地说明各种渲染行为，每种特性值的效果都被展示了出来。在本示例中，使用具有可见网格线的`Grid`元素作为父元素，以更好地说明每种属性值的布局行为。
 

@@ -6,39 +6,37 @@
 
 `Panel`是Avalonia中提供布局支持的所有元素的基类。派生的`Panel`元素用于在XAML和代码中定位和排列元素。
 
-Avalonia有一套全面的派生自`Panel`的实现，支持许多复杂的布局。这些派生类暴露了支持大多数标准UI场景的属性和方法。在没有找到满足开发人员需要的子排列的行为之前，开发人员可以通过重写`ArrangeOverride`和`MeasureOverride`方法来创建新布局。想要了解自定义布局行为的更多信息，请浏览[创建自定义Panel](create-a-custom-panel.md)。
+Avalonia有一套全面的派生自`Panel`的实现，支持许多复杂的布局。这些派生类暴露了支持大多数标准用户界面(UI)场景的属性和方法。如果开发者找不到满足其需求的子排列行为，可以通过重写`ArrangeOverride`和`MeasureOverride`方法创建新的布局。想要了解自定义布局行为的更多信息，请浏览[创建自定义Panel](create-a-custom-panel.md)。
 
-### Panel通用成员 <a id="panel-common-members"></a>
+### Panel公共成员 <a id="panel-common-members"></a>
 
 所有`Panel`元素都支持由`Control`定义的关于尺寸调整和定位的基本属性，包括`Height`、`Width`、`HorizontalAlignment`、`VerticalAlignment`和`Margin`。想要了解关于`Control`中定义的定位属性的其他信息，请浏览[Alignment、Margins和Padding概述](alignment-margins-and-padding.md)。
 
-`Panel`暴露了对理解和使用布局至关重要的属性。`Background`属性作用在用`Brush`填充派生`Panel`元素边界之间的区域，`Children`表示`Panel`所包含的元素的子集合。
+`Panel`暴露了对理解和使用布局至关重要的属性。`Background`属性作用在用`Brush`填充派生`Panel`元素边界之间的区域，`Children`表示`Panel`所包含的子元素集合。
 
 **附加属性(Attached Properties)**
 
 派生自`Panel`的元素广泛使用了附加属性。附加属性是一种特殊形式的依赖属性，它没有常规的公共语言运行库(CLR)属性`wrapper`。附加的属性在XAML中有一个特殊的语法，可以在下面的几个示例中看到。
 
-附加属性的一个目的是允许子元素存储父元素实际定义的属性的唯一值。具有此功能的应用程序能让子元素通知父元素如何在UI中显示，这对于应用程序布局非常有用。
+附加属性的一个用途是允许子元素存储实际上由父元素定义的属性的唯一值。此功能的一项应用是让子元素通知父级它们希望如何在用户界面(UI)中呈现，这对应用程序布局非常有用。
 
-### User Interface Panels <a id="user-interface-panels"></a>
+### 用户界面Panel <a id="user-interface-panels"></a>
 
-Avalonia中有几个支持UI场景的、经过优化的`Panel`类：`Panel`、`Canvas`、`DockPanel`, `Grid`, `StackPanel`, `WrapPanel` 和 `RelativePanel`。这些`Panel`元素易于使用、功能强大且可扩展性高，足以胜任大多数应用。
+UI方案中有几个面板类可用：`Panel`、`Canvas`、`DockPanel`、`Grid`、`StackPanel`、`WrapPanel`和`RelativePanel`。这些面板元素易于使用、功能齐全并且可扩展，足以适用于大多数应用程序。
 
 **画布(Canvas)** <a id="canvas-class"></a>
 
-`Canvas`元素根据 _x-_ 和 _y-_ 的绝对坐标定位内容。元素可以在唯一的位置绘制，如果元素占据相同的坐标，则它们在标记中出现的顺序决定了元素的绘制顺序。
+`Canvas`元素支持根据x和y的绝对坐标定位内容。元素可以在唯一的位置绘制，如果元素占据相同的坐标，则它们在标记中出现的顺序决定了它们的绘制顺序。
 
-`Canvas`是所有`Panel`中最灵活的布局。高度(`Height`)和宽度(`Width`)属性用于定义`Canvas`的面积，里面的元素被分配了相对于父`Canvas`面积的绝对坐标。四个附加属性`Canvas.Left`、`Canvas.Top`、`Canvas.Right`和`Canvas.Bottom`，可以控制对象在`Canvas`中的精确位置，允许开发者在屏幕上精确定位和排列元素。
+`Canvas`是所有`Panel`中最灵活的布局。高度(`Height`)和宽度(`Width`)属性用于定义`Canvas`的区域，并为内部的元素分配相对于父`Canvas`的区域的绝对坐标。对于附加属性`Canvas.Left`、`Canvas.Top`、`Canvas.Right`和`Canvas.Bottom`，可以控制对象在`Canvas`中的精确位置，使开发者可以在屏幕上精确定位和排列元素。
 
 **Canvas中的ClipToBounds**
 
-`Canvas`可以将子元素放置在屏幕上的任何位置，甚至在其自身定义的`Height`和`Width`之外的坐标处。此外，`Canvas`不受其子对象大小的影响。因此，子元素可能会在父`Canvas`的边界矩形之外绘制其他元素。`Canvas`默认允许在父`Canvas`边界之外绘制子对象。如果不希望出现这种情况，可以将`ClipToBounds`属性设置为`true`，这将导致`Canvas`剪裁到其自身大小。`Canvas`是唯一允许在其边界之外绘制子对象的布局元素。
+`Canvas`可以将子元素放置在屏幕上的任何位置，甚至在其自身定义的`Height`和`Width`之外的坐标处。此外，`Canvas`不受其子对象大小的影响。因此，子元素可能会在父`Canvas`的边框之外绘制其他元素。`Canvas`默认允许在父`Canvas`边界之外绘制子对象。如果不希望出现这种情况，可以将`ClipToBounds`属性设置为`true`，这将导致`Canvas`剪裁到其自身大小。`Canvas`是唯一允许在其边界之外绘制子对象的布局元素。
 
 **声明和使用Canvas**
 
-只需使用XAML或代码即可实例化`Canvas`。下面的示例演示如何使用`Canvas`来绝对定位内容。此代码生成三个100像素的正方形。第一个正方形是红色的，其左上角的\(_x, y_)位置指定为\(0, 0\)。第二个正方形是绿色的，其左上角的位置是\(100, 100\)，正好在第一个正方形的右下方。第三个正方形是蓝色的，其左上角的位置是\(50, 50\)，因此包含第一个正方形的右下象限和第二个正方形的左上象限。因为第三个正方形是最后布置的，所以它看起来位于其他两个正方形的顶部，也就是说，重叠部分呈现第三个方框的颜色。
-
-A `Canvas` can be instantiated simply by using XAML or code. The following example demonstrates how to use `Canvas` to absolutely position content. This code produces three 100-pixel squares. The first square is red, and its top-left \(_x, y_\) position is specified as \(0, 0\). The second square is green, and its top-left position is \(100, 100\), just below and to the right of the first square. The third square is blue, and its top-left position is \(50, 50\), thus encompassing the lower-right quadrant of the first square and the upper-left quadrant of the second. Because the third square is laid out last, it appears to be on top of the other two squares—that is, the overlapping portions assume the color of the third box.
+只需使用XAML或代码即可实例化`Canvas`。下面的示例演示如何使用`Canvas`对内容进行绝对定位。此代码生成三个100像素的正方形。第一个正方形为红色，其左上角的\(_x, y_)位置指定为\(0, 0\)。第二个正方形为绿色，其左上角的位置是\(100, 100\)，在第一个正方形的右下方。第三个正方形为蓝色，其左上角为\(50, 50\)，因此包含了第一个正方形的右下四分之一部分和第二个正方形的左上四分之一部分。由于第三个正方形最后布置，因此它看起来在另外两个正方形上方，即，重叠部分采用第三个正方形的颜色。
 
 C\#
 
@@ -88,13 +86,13 @@ XAML
 
 **DockPanel** <a id="dockpanel-class"></a>
 
-`DockPanel`元素使用在子内容元素中设置的`DockPanel.Dock`附加属性沿着容器边缘来定位内容。当`DockPanel.Dock`设置为`Top`或`Bottom`时，它会将子元素置于彼此之上或之下；当`DockPanel.Dock`设置为`Left`或`Right`时，它会将子元素放置在彼此的左侧或右侧。`LastChildFill`属性决定作为`DockPanel`子元素添加的最终位置。
+`DockPanel`元素使用在子内容元素中设置的`DockPanel.Dock`附加属性沿容器边缘定位内容。`DockPanel.Dock`设置为`Top`或`Bottom`时，它会将子元素放置在彼此的上方或下方。`DockPanel.Dock`设置为`Left`或`Right`时，它会将子元素放置在彼此的左侧或右侧。`LastChildFill`属性确定添加为`DockPanel`的子级的最后一个元素的位置。
 
-您可以使用`DockPanel`定位一组相关控件，例如一组按钮。或者，您可以使用它创建`paned`UI。
+可以使用`DockPanel`定位一组相关控件，如一组按钮。或者，可以使用它创建“平移”的UI。
 
 **根据内容调整尺寸**
 
-如果未指定`Height`和`Width`属性，`DockPanel`将根据其内容调整尺寸，尺寸可以增加或减少以适应其子元素的大小。但是，当指定了这些属性并且没有空间容纳下一个指定的子元素时，`DockPanel`不会显示该子元素或后续子元素，也不会测量后续子元素。
+如果未指定其`Height`和`Width`属性，则`DockPanel`会调整大小以适应其内容。大小可以增大或减小以容纳其子元素的大小。但是，当已指定这些属性，并且不再有空间能容纳下一个指定子元素时，`DockPanel`将不会显示该子元素或后续子元素，并且不会测量后续子元素。
 
 **LastChildFill**
 
@@ -102,7 +100,7 @@ XAML
 
 **声明和使用DockPanel**
 
-下面的示例演示如何使用`DockPanel`对空间进行分区。在父元素`DockPanel`里添加了五个`Border`子元素，每个`Border`使用`DockPanel`的不同定位属性来划分空间。最后一个元素“填充”了剩余的未分配空间。
+以下示例演示如何使用`DockPanel`为空间分区。五个`Border`元素添加为父`DockPanel`的子级。 每个都使用不同的`DockPanel`位置属性来为空间分区。最后一个元素"填充"剩余的未分配空间。
 
 C\#
 
@@ -195,15 +193,15 @@ XAML
 </DockPanel>
 ```
 
-**Grid** <a id="grid-class"></a>
+**网格(Grid)** <a id="grid-class"></a>
 
 `Grid`元素合并了绝对定位和表格式数据控件的功能，使您能够轻松定位元素并设置元素样式。`Grid`允许您定义灵活的行和列分组，甚至提供了一种在多个`Grid`元素之间共享尺寸信息的机制。
 
-**行列尺寸调整机制**
+**行和列的尺寸调整机制**
 
-在`Grid`中定义的行和列可以利用`Star`调整尺寸，以便按比例分配剩余空间。当选择`Star`作为行或列的高度或宽度时，该行或列将获得剩余可用空间的加权比例。`Auto`与此相反，`Auto`将根据行或列中内容的大小均匀分配空间。
+在`Grid`中定义的行和列可以充分利用`Star`大小调整来按比例分配剩余空间。当选择`Star`作为行或列的`Height`或`Width`时，该行或列将收到剩余可用空间的加权比例。 这与`Auto`相反，后者根据行或列内的内容大小平均分配空间。
 
-当使用XAML时，值表示为`*`或`2*`。在第一种情况下，行或列将接收可用空间的一倍，在第二种情况下接收两倍，依此类推。通过将此技术与`HorizontalAlignment`和`VerticalAlignment`值`Stretch`相结合，可以按屏幕空间的百分比划分布局空间。`Grid`是唯一可以使用这种方式分配空间的布局Panel。
+使用XAML时，此值表示为`*`或`2*`。在第一种情况下，行或列将得到一倍的可用空间，在第二种情况下，将得到两倍的可用空间，依此类推。通过将这一按比例分配空间的技术与`Stretch`的`HorizontalAlignment`和`VerticalAlignment`值结合使用，可以按屏幕空间的百分比为布局空间分区。`Grid`是唯一可以按此方式分配空间的布局面板。
 
 **声明和使用Grid**
 

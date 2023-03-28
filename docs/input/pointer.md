@@ -27,7 +27,7 @@ control.PointerPressed += (args) =>
 }
 ```
 
-在上述实例中，坐标 `x` 和 `y` 是相对于窗口原点定位的。如果你希望这些坐标相对定位于某个控件, 你可以将 `PointerEventArgs.GetCurrentPoint` 函数改成这样： `var pointControlCoords = args.GetCurrentPoint(control);`
+在上述实例中，坐标 `x` 和 `y` 是相对于窗口原点定位的。如果你希望这些坐标相对定位于某个控件, 你可以将该控件传入 `PointerEventArgs.GetCurrentPoint` 函数，如： `var pointControlCoords = args.GetCurrentPoint(control);`
 
 # 点击事件的参数：
 

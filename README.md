@@ -1,3 +1,9 @@
+注意：本仓库已经进入归档状态。Avalonia V11.0后中文文档将与Avalonia文档主仓库合并。
+
+请前往 https://github.com/AvaloniaUI/avalonia-docs 贡献翻译
+
+---
+
 # 👋 欢迎
 
 欢迎访问`Avalonia`文档！
